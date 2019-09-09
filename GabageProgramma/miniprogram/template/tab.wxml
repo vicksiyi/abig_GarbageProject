@@ -1,0 +1,48 @@
+<template name="tab1">
+  <image src="../../images/index.png"></image>
+  <!-- 类别 -->
+  <view class="type">
+    <block wx:for="{{type}}">
+      <view class="type-style" bindtap="changeItem" data-Id="{{index}}" style="background:{{item.color}};">
+        <view class="type-style-01">
+          <image class="image-01" src="{{item.image}}"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="d3" style="margin-left:{{left}}rpx;border-color:{{color}} transparent transparent transparent;"></view>
+  <!-- 类别 -->
+  <swiper class="swiper-list" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChangeList" current="{{currentItemList}}">
+    <block wx:for="{{type}}">
+      <swiper-item class="swiper-list-item" style="background:{{item.color}}" item-id="{{index}}">
+        <view class="swiper-item-sty">
+          {{item.explain}}
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+<template name="tab2">
+  <i-tabs current="{{ currentTab2 }}" color="#19be6b" bindchange="handleChangeTab2">
+    <i-tab key="tab1Tab2" title="推荐"></i-tab>
+    <i-tab key="tab2Tab2" title="热门"></i-tab>
+    <i-tab key="tab3Tab2" title="其他"></i-tab>
+  </i-tabs>
+
+  <!-- 文章类别 -->
+  <!-- <block wx:for="{{contentData}}">
+    <view class="content-list">
+      <view class="content-list-view">
+        <image class="content-list-image" src="{{item.image}}"></image>
+      </view>
+      <view>
+        <view>{{item.datetime}}</view>
+        <view>{{item.abstract}}</view>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </block> -->
+
+</template>
+<template name="tab3">3</template>
+<template name="tab4">4</template>
