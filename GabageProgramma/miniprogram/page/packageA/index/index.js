@@ -21,43 +21,59 @@ Page({
     color: "#2d8cf0",
     contentData: [],
     type: [{
-        "image": "../../images/tcimg01.png",
-        "name": "可回收垃圾",
-        "color": "#2d8cf0",
-        "margin": "70",
-        "explain": "废纸张、废塑料、废玻璃制品、废金属、废织物等适宜回收、可循环利用的生活废弃物"
+      "image": "../resources/images/tcimg01.png",
+      "name": "可回收垃圾",
+      "color": "#2d8cf0",
+      "margin": "70",
+      "explain": "废纸张、废塑料、废玻璃制品、废金属、废织物等适宜回收、可循环利用的生活废弃物"
+    },
+    {
+      "image": "../resources/images/tcimg02.png",
+      "name": "有害垃圾",
+      "color": "#ed3f14",
+      "margin": "270",
+      "explain": "对人体健康或自然环境造成直接或潜在的危害废弃物。"
+    },
+    {
+      "image": "../resources/images/tcimg03.png",
+      "name": "湿垃圾",
+      "color": "#664035",
+      "margin": "460",
+      "explain": "部分地区又称”厨余垃圾”，日常生活垃圾产生的容易腐烂的生物质废物。"
+    },
+    {
+      "image": "../resources/images/tcimg04.png",
+      "name": "干垃圾",
+      "color": "#495060",
+      "margin": "640",
+      "explain": "部分地区又称”其他垃圾”，除有害垃圾、可回收物、湿垃圾以外的生活废弃物。"
+    }
+    ],
+    inputLogo: [
+      {
+        "image": "../resources/images/1.png",
+        "text": "文字搜索"
       },
       {
-        "image": "../../images/tcimg02.png",
-        "name": "有害垃圾",
-        "color": "#ed3f14",
-        "margin": "270",
-        "explain": "对人体健康或自然环境造成直接或潜在的危害废弃物。"
+        "image": "../resources/images/2.png",
+        "text": "拍照识别"
       },
       {
-        "image": "../../images/tcimg03.png",
-        "name": "湿垃圾",
-        "color": "#664035",
-        "margin": "460",
-        "explain": "部分地区又称”厨余垃圾”，日常生活垃圾产生的容易腐烂的生物质废物。"
-      },
-      {
-        "image": "../../images/tcimg04.png",
-        "name": "干垃圾",
-        "color": "#495060",
-        "margin": "640",
-        "explain": "部分地区又称”其他垃圾”，除有害垃圾、可回收物、湿垃圾以外的生活废弃物。"
+        "image": "../resources/images/3.png",
+        "text": "语音识别"
       }
-    ]
+    ],
+    thisCurrent:'',
+    thisPage:['textPage','imagePage','videoPage']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
-  handleChange: function(res) {
+  handleChange: function (res) {
     let _this = this;
     let currentNumItem = 0
     _this.setData({
@@ -89,16 +105,16 @@ Page({
     })
   },
   // 导航
-  bindChange: function(res) {
+  bindChange: function (res) {
     let _this = this
     _this.setData({
       current: res.detail.currentItemId
     })
   },
-  onShow: function() {
+  onShow: function () {
     let _this = this
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         _this.setData({
           height: parseInt(res.windowHeight) - 83 + ''
         })
@@ -106,7 +122,7 @@ Page({
     });
   },
   // list改变swipter
-  changeItem: function(res) {
+  changeItem: function (res) {
     let _this = this;
     _this.setData({
       currentItemList: res.currentTarget.dataset.id,
@@ -115,7 +131,7 @@ Page({
     this.setInterMargin(_this.data.type[res.currentTarget.dataset.id].margin)
   },
   // swipter改变list
-  bindChangeList: function(res) {
+  bindChangeList: function (res) {
     let _this = this;
     _this.setData({
       color: _this.data.type[res.detail.current].color
@@ -123,7 +139,7 @@ Page({
     this.setInterMargin(this.data.type[res.detail.current].margin)
   },
   // 滑动箭头
-  setInterMargin: function(endList) {
+  setInterMargin: function (endList) {
     let _this = this;
     // 终点位置&起始相对位置
     if (Number(this.data.left) > Number(endList)) {
@@ -159,5 +175,17 @@ Page({
     _this.setData({
       currentTab2: detail.key
     });
+  },
+  swiperChange: function (res) {
+    let _this = this
+    _this.setData({
+      thisCurrent: res.detail.current
+    })
+  },
+  swiperClick:function(res){
+    let _this = this
+    wx.navigateTo({
+      url: '../../packageB/pages/' + _this.data.thisPage[res.currentTarget.dataset.id] + '/index'
+    })
   }
 })

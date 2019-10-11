@@ -1,5 +1,5 @@
 <template name="tab1">
-  <image src="../../images/index.png"></image>
+  <image src="../resources/images/index.png"></image>
   <!-- 类别 -->
   <view class="type">
     <block wx:for="{{type}}">
@@ -15,8 +15,21 @@
   <swiper class="swiper-list" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChangeList" current="{{currentItemList}}">
     <block wx:for="{{type}}">
       <swiper-item class="swiper-list-item" style="background:{{item.color}}" item-id="{{index}}">
-        <view class="swiper-item-sty">
-          {{item.explain}}
+        <view class="swiper-item-sty">{{item.explain}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 三搜索 -->
+  <swiper class="swiper-list2" circular="true" skip-hidden-item-layout="true" previous-margin="120px" next-margin="120px" bindchange="swiperChange">
+    <block wx:for="{{inputLogo}}">
+      <swiper-item class="swiper2-list-item">
+        <view style="width:100%;">
+          <view bindtap="{{index==thisCurrent?'swiperClick':''}}"  data-Id="{{index}}" style="width:{{index==thisCurrent?200:160}}rpx;height:{{index==thisCurrent?200:160}}rpx;background:{{index==thisCurrent?'#19be6b':'#5cc08e'}};"  class="swiper2-item-sty">
+            <view  class="swiper-image-01">
+              <image style="width:{{index==thisCurrent?80:40}}rpx;height:{{index==thisCurrent?80:40}}rpx;" src="{{item.image}}"></image>
+            </view>
+            <view style="font-size:{{index==thisCurrent?0.8:0.6}}rem;" class="swiper-text">{{item.text}}</view>
+          </view>
         </view>
       </swiper-item>
     </block>
@@ -28,7 +41,6 @@
     <i-tab key="tab2Tab2" title="热门"></i-tab>
     <i-tab key="tab3Tab2" title="其他"></i-tab>
   </i-tabs>
-
   <!-- 文章类别 -->
   <!-- <block wx:for="{{contentData}}">
     <view class="content-list">
@@ -42,7 +54,6 @@
       <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
     </view>
   </block> -->
-
 </template>
 <template name="tab3">3</template>
 <template name="tab4">4</template>

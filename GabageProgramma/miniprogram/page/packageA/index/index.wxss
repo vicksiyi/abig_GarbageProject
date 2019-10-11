@@ -99,3 +99,37 @@ image {
   width: 100%;
   height: 180rpx;
 }
+
+.swiper-list2 {
+  width: 98%;
+  margin: 120rpx auto;
+  position: relative;
+  top: -10px;
+}
+.swiper2-list-item{
+  height: 320rpx;
+}
+.swiper2-item-sty{
+  background: #5cc08e;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.swiper2-item-sty image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.swiper-text{
+  text-align: center;
+  line-height: 0;
+  font-size: 0.6rem;
+}
+
+.swiper-image-01{
+  margin: 36rpx auto;
+}

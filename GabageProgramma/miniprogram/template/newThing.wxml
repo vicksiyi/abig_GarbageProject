@@ -1,0 +1,3 @@
+<template name="recommended">3</template>
+<template name="hot">3</template>
+<template name="other">4</template>

@@ -1,9 +1,9 @@
-< import src="../../template/tab.wxml" />
+<import src="../../../template/tab.wxml" />
 <!-- 通知 -->
 
 <swiper style='width:100%;height:{{height}}px;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChange" current="{{currentItem}}">
     <swiper-item item-id="homepage">
-      <template is="tab1" data="{{type,left,color,currentItemList}}"></template>
+      <template is="tab1" data="{{type,left,color,currentItemList,inputLogo,thisCurrent}}"></template>
     </swiper-item>
     <swiper-item item-id="group">
       <template is="tab2" data="{{currentTab2,spinShow,contentData}}"></template>
