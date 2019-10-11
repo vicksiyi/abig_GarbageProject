@@ -15,6 +15,7 @@
       <template is="tab4" data="{{openid,nickName,avatarUrl}}"></template>
     </swiper-item>
 </swiper>
+<i-toast id="toast" />
 <view class="footer">
   <i-tab-bar current="{{ current }}" color="#19be6b" bindchange="handleChange">
     <i-tab-bar-item key="homepage" icon="camera" current-icon="camera_fill" title="识别"></i-tab-bar-item>

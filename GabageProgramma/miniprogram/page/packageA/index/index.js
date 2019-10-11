@@ -1,4 +1,5 @@
 //index.js
+const { $Toast } = require('../../../dist/base/index');
 const app = getApp()
 
 Page({
@@ -63,15 +64,18 @@ Page({
         "text": "语音识别"
       }
     ],
-    thisCurrent:'',
-    thisPage:['textPage','imagePage','videoPage']
+    thisCurrent: '',
+    thisPage: ['textPage', 'imagePage', 'videoPage']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 测试所用
+    // wx.navigateTo({
+    //   url:"../../packageB/pages/textPage/index"
+    // })
   },
   handleChange: function (res) {
     let _this = this;
@@ -182,10 +186,16 @@ Page({
       thisCurrent: res.detail.current
     })
   },
-  swiperClick:function(res){
+  swiperClick: function (res) {
     let _this = this
-    wx.navigateTo({
-      url: '../../packageB/pages/' + _this.data.thisPage[res.currentTarget.dataset.id] + '/index'
-    })
+    if (res.currentTarget.dataset.id == 0) {
+      wx.navigateTo({
+        url: '../../packageB/pages/' + _this.data.thisPage[res.currentTarget.dataset.id] + '/index'
+      })
+    } else {
+      $Toast({
+        content: '敬请期待'
+      });
+    }
   }
 })

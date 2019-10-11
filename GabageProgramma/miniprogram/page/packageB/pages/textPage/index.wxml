@@ -1,0 +1,32 @@
+<!-- 搜索框 -->
+<view class='search'>
+    <input type='text' placeholder='输入你想要查询的名称' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+    <image class="" src='../../resources/images/search.jpg' bindtap='query'></image>
+</view>
+<i-load-more wx:if="{{loadShowLoad}}" />
+<i-load-more wx:else tip="暂无数据" loading="{{ loadShow }}" />
+<!-- 弹窗通知 -->
+<div class="cover" bindtap="close" wx:if="{{showModel}}">
+    <view class="model" style="background:{{color}}">
+        <view class="model-all">{{name}}</view>
+        <view class="model-tag">属于</view>
+        <view class="model-content">
+            <view wx:if="{{imageUrl}}" class="model-content-img">
+                <image src="{{imageUrl}}"></image>
+            </view>
+            <view wx:else class="model-content-img-text">
+                {{imageUrlText}}
+            </view>
+            <view class="model-content-text">{{contentText}}</view>
+        </view>
+        <i-load-more loading="{{ false }}" />
+        <!-- 小科普 -->
+        <view class="model-content-text2">{{contentText2}}</view>
+        <!-- 关闭 -->
+        <view class="close" bindtap="close">
+            <view class="close-margin">
+                <image src="../../resources/images/close.png"></image>
+            </view>
+        </view>
+    </view>
+</div>

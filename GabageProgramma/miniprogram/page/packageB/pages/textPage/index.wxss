@@ -1,1 +1,103 @@
-/* page/packageB//pages/textPage/index.wxss */
+/* 搜索框样式 */
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 60rpx;
+    background-color: whitesmoke;
+    margin-top: 5%;
+    border: 1rpx solid whitesmoke;
+    border-radius: 5rpx;
+    margin: 10rpx auto;
+}
+
+/* 搜索框提示文字样式 */
+.search input {
+    font-size: 27rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 30rpx;
+    color: #666;
+}
+
+/* 搜索框小图标 */
+.search image {
+    width: 40rpx;
+    height: 40rpx;
+    padding-right: 20rpx;
+}
+
+
+/* 弹窗 */
+.cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.model {
+    background: #664035;
+    width: 70%;
+    margin: 20% auto;
+    color: #fff;
+}
+
+.model-content {
+    padding: 30rpx;
+    height: 250rpx;
+    font-size: 0.8rem;
+    overflow: auto;
+}
+
+.model-content image {
+    width: 163rpx;
+    height: 100rpx;
+}
+.model-content-img{
+    width: 163rpx;
+    margin: auto;
+    padding-block-end: 20rpx;
+}
+
+.model-content-text{
+    height: 100rpx;
+    overflow: scroll;
+}
+
+.model-all {
+    text-align: center;
+    padding-top: 30rpx;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.model-tag{
+    text-align: center;
+    padding-top: 10rpx;
+    font-size: 1rem;
+}
+
+.close {
+    position: relative;
+    top: 78rpx;
+    left: 222rpx;
+}
+.model-content-img-text{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.close-margin {
+    width: 60rpx;
+}
+.model-content-text2{
+    font-size: 0.8rem;
+    padding:30rpx;
+}
+.close image {
+    width: 60rpx;
+    height: 60rpx;
+}

@@ -1,11 +1,22 @@
-// page/packageB//pages/textPage/index.js
+const typeText = require("../../resources/js/type")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    inputValue: '',
+    loadShow: false,
+    loadShowLoad: false,
+    value: [],
+    showModel: false,
+    typeText: typeText.typeText,
+    color: '',
+    name: '',
+    imageUrl: '',
+    contentText: '',
+    contentText2: '',
+    imageUrlText: ''
   },
 
   /**
@@ -14,53 +25,61 @@ Page({
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  query: function (e) {
+    let _this = this
+    const db = wx.cloud.database()
+    // wx.request({
+    //   url: 'http://118.178.181.46:5000/gc/'+_this.data.inputValue,
+    //   success(e){
+    //     console.log(e.data)
+    //   }
+    // })
+    _this.setData({
+      loadShowLoad: true
+    })
+    db.collection('gc_all').where({
+      name: _this.data.inputValue
+    }).get({
+      success: function (res) {
+        // res.data 包含该记录的数据
+        if (res.data.length) {
+          _this.setData({
+            value: res.data,
+            loadShow: false
+          })
+          // 当只有一条记录时候
+          if (res.data.length == 1) {
+            for (let i = 0; i < _this.data.typeText.length; i++) {
+              if (_this.data.typeText[i].name == res.data[0].type) {
+                _this.setData({
+                  name: res.data[0].name,
+                  imageUrl: _this.data.typeText[i].image,
+                  color: _this.data.typeText[i].color,
+                  contentText: _this.data.typeText[i].explain,
+                  contentText2: _this.data.typeText[i].require,
+                  imageUrlText: res.data[0].type,
+                  showModel: true
+                })
+              }
+            }
+          }
+        }
+        _this.setData({
+          loadShowLoad: false
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  inputBind: function (res) {
+    let _this = this
+    _this.setData({
+      inputValue: res.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  close: function () {
+    let _this = this
+    _this.setData({
+      showModel: false
+    })
   }
 })

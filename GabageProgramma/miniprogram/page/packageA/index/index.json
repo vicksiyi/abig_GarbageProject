@@ -10,6 +10,7 @@
     "i-action-sheet": "../../../dist/action-sheet/index",
     "i-badge": "../../../dist/badge/index",
     "i-tab-bar": "../../../dist/tab-bar/index",
-    "i-tab-bar-item": "../../../dist/tab-bar-item/index"
+    "i-tab-bar-item": "../../../dist/tab-bar-item/index",
+    "i-toast": "../../../dist/toast/index"
   }
 }
