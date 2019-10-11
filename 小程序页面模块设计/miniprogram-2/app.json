@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#218868",
+    "navigationBarTitleText": "湿垃圾",
+    "navigationBarTextStyle":"white"
+  },
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-button": "../../dist/button/index"
+}
+}

@@ -1,0 +1,114 @@
+/**index.wxss**/
+
+/* 搜索框样式 */
+.search
+{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width:70%;
+  height:60rpx;
+  background-color:whitesmoke;
+  margin-top: 5%;
+  border:1rpx solid whitesmoke;
+  border-radius: 5rpx;
+
+}
+
+/* 搜索框提示文字样式 */
+.search input
+{
+  font-size:27rpx;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left:30rpx; 
+}
+
+/* 搜索框小图标 */
+.search image
+{ 
+  width:40rpx;
+  height:40rpx;
+  padding-right:20rpx;
+}
+.border{
+margin: 20rpx;
+border: 1rpx solid #218868;
+border-radius: 5px;
+margin-top: 15%;
+}
+.border1{
+margin: 20rpx;
+border: 1rpx dashed #218868;
+border-radius: 5px;
+margin-top: 2%;
+}
+.all{
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.all .title{
+font-size: 20px;
+color: #000;
+justify-content: center;
+text-align: left;
+margin-top: 10px;
+}
+.all .Item{
+width: 100%;
+display: flex;
+}
+.all .Item image{
+width: 90px;
+height: 90px;
+margin: 10px;
+flex-shrink: 0;
+border-radius: 45px;
+border: 1rpx solid #218868;
+}
+
+.all .Item .content{
+width: 200rpx;
+margin-top: 5px;
+margin-right: 10px;
+flex-grow: 1;
+flex-shrink: 1;
+}
+.all .Item .content .title{
+font-size: 18px;
+color:#999999;
+font-family: "宋体";
+}
+.all .Item .content .tag{
+font-size: 18px;
+color: #999999;
+margin-top: 10px;
+font-family: "宋体";
+}
+.all .Item .content .time{
+float: left;
+color:#999999;
+font-size: 18px;
+margin-top: 10px;
+font-family: "宋体";
+padding: 5rpx;
+}
+.jj{
+font-size: 23px;
+color: #000000;
+font-family: "黑体";
+margin-top: 5px;
+}
+.text{
+font-size: 16px;
+color: #000000;
+font-family: "宋体";
+margin-top: 7px;
+}
+.button{
+  width: 300rpx;
+  margin-top: 5%;
+  color: whitesmoke;
+  background-color:rgb(255, 255, 255);
+}

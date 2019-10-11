@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/practise/practise",
+    "pages/answer/answer",
+    "pages/mixed_answer/mixed_answer",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

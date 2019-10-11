@@ -1,0 +1,14 @@
+<!--pages/mixed_answer/mixed_answer.wxml-->
+<view class="main">
+<text class="title">规则:
+1、一题10分，共计10题，总分100分
+2、限时答题：时间为10分钟，未完成游戏失败。
+3、xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+4、xxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+
+<button  class="btn" >开始答题</button> 
+<view class="img">
+<image style="height: 600rpx;" src="../../images/pic3.png" ></image>
+</view>
+</view>
+

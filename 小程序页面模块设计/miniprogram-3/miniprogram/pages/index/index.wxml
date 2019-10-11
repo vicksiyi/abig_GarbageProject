@@ -1,0 +1,69 @@
+<!--pages/swiperTab/swiperTab.wxml-->
+<view>  
+  <!--顶部导航栏-->  
+  <view class="swiper-tab">  
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">推荐</view>  
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">热门</view>  
+    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">其他</view>  
+  </view>  
+  <!--内容主体-->  
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">  
+    <swiper-item>
+    <!--推荐--> 
+  <view class="anglesList"  wx:for="{{find1}}"> 
+  <navigator class="anglesNavigator"> 
+    <view class="imgBox"> 
+      <image src="{{item.picture}}" mode="aspectFill"></image> 
+    </view> 
+    <view class="textBox"> 
+      <text class="title">{{item.title}}</text>
+      <text class="tag">{{item.tag}}</text> 
+      <text class="time">{{item.time}}</text> 
+    </view> 
+  </navigator> 
+  <navigator class="btnFollowed">
+  <image class="dash1" mode='aspectFill' src='../image/dash.png'></image>
+  </navigator>
+</view>
+    </swiper-item>  
+    <swiper-item>  
+        <!--热门--> 
+  <view class="all1"  wx:for="{{find1}}">
+     <view class="border1">  
+    <view class='Item1'>
+     <image class="image1" mode='aspectFill' src="{{item.picture}}"></image>
+     <view class='content1'>
+      <view class="title1">{{item.title}}</view>
+       <view class="time1">{{item.time}}</view>
+      </view>
+       </view>
+</view>
+<view >
+     <text class='reason_txt'>圾不可错</text>
+</view>
+</view>
+    </swiper-item>  
+    <swiper-item>  
+
+      <!--其他--> 
+       <view  class='allbg' >
+   <view  class='bg' >
+      <view wx:for="{{find1}}">
+        <navigator url='{{item._id}}'>
+          <view class='size' >
+            <image class='picture' mode='aspectFill' src='{{item.picture}}'></image>
+            <view class="content">
+            <view class="top">{{item.title}}</view>
+            <view class="bottom">
+             <view class="toptag">{{item.tag}}</view>
+             <image class="dash" mode='aspectFill' src='../image/dash.png'></image>
+            </view></view>
+          </view>
+        </navigator>
+      </view>
+  </view>
+    </view>
+
+    </swiper-item>  
+  </swiper>  
+</view>  

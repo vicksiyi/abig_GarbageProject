@@ -1,0 +1,223 @@
+/* pages/swiperTab/swiperTab.wxss */
+.page {  
+  margin-left: 10rpx;  
+  margin-right: 10rpx;  
+}  
+/*切换*/
+.swiper-tab {  
+  display: flex;  
+  flex-direction: row;  
+  line-height: 80rpx;
+  background-color: #fff;  
+  border-bottom: 2rpx solid #dfdfdf;  
+}  
+.tab-item {  
+  width: 33.3%;  
+  text-align: center;  
+  font-size: 14px;  
+  color: #999999; 
+  font-family: "宋体"; 
+}  
+.swiper {  
+  height: 1100px;  
+  background: #fff;  
+}  
+.on {  
+  color: #00CC00;  
+  border-bottom: 3rpx solid #00CC00;  
+}  
+/*推荐*/
+.anglesList{ 
+  display:flex;/*使用flex布局*/ 
+  align-items:center;
+  padding:15rpx 15rpx 15rpx 0;
+  border-bottom:1px solid #EAEAE8; 
+} 
+.anglesList .anglesNavigator{ 
+  display:flex;
+  align-items:center;
+  flex-grow:1;
+} 
+
+.anglesList .imgBox image{ 
+  width:205rpx; 
+  height:155rpx; 
+  border-radius:10%; 
+  margin-left: 25rpx;
+  border-bottom: 1rpx solid #dfdfdf;
+} 
+
+.anglesList .textBox{ 
+  flex-grow:1;
+  margin-left: 20rpx;
+  margin-bottom: 15rpx;
+  }
+.anglesList text{ 
+  display:block; 
+  max-width:12em; 
+  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+}
+.anglesList .title{
+  font-size: 18px;
+  color:#333;
+  font-family: "宋体";
+}
+.anglesList .anglesNavigator .tag{
+   font-size: 15px;
+  color: #00CC00;
+  margin-top: 10px;
+  font-family: "宋体";
+}
+.anglesList .anglesNavigator .time{
+  color:#BFBFBF;
+  font-size: 12px;
+  margin-top: 10rpx;
+  font-family: "宋体";
+}
+.btnFollow{ 
+  flex-basis:140rpx; 
+  height:46rpx; 
+  border-radius:24rpx; 
+  background:#fff; 
+  text-align:center; 
+}
+.dash1{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 110rpx;
+}
+/*热门*/
+
+.all .Item .content .bottom1{
+  display: flex;
+  flex-direction: row;
+  align-items:right;
+  justify-content: right;
+  font-size: 14px;
+  color:darkgrey;
+  padding-top: 10rpx;
+}
+.all .Item .content .bottom1 .dash{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 200rpx;
+}
+/*热门*/
+.border1{
+   width: 98%;
+   margin-top: 15rpx;
+   margin-left: 6%;
+   border-radius: 5px;
+}
+.all1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.all1 .Item1{
+  width: 100%;
+}
+.all1 .Item1  .image1{
+  width: 90%;
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.all1 .Item1 .content1{
+  width: 89%;
+  display: block;
+  background-color: #000;
+  color: #fff;
+  opacity: 0.7;
+  margin-top: -63rpx;
+  padding: 5rpx;
+}
+.all1 .Item1 .content1 .title1{
+ font-size: 18px;
+  color:#fff;
+  font-family: "宋体";
+  padding-left: 15rpx;
+}
+.all1 .Item1 .content1 .time1{
+  color:#fff;
+  float: right;
+  margin-top: -48rpx;
+  font-size: 15px;
+  font-family: "宋体";
+  padding-right: 15rpx;
+}
+/*下划线*/
+.reason_txt{
+  font-size: 20rpx;
+  color:rgb(187, 186, 186);
+  display: table;
+  width: auto;
+  white-space: nowrap;
+  border-spacing: 0.2rem 0;
+  margin-top: 10rpx;
+  font-family: "楷体";
+}
+ 
+.reason_txt::before,.reason_txt::after{
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#D8D8D8, #D8D8D8) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+/*其他*/
+.allbg{
+  height: 100%;
+  background-color: #F3F3F3;
+}
+.bg{
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+}
+.size{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content:left;
+  width: 340rpx;
+  background-color: white;
+  margin-left: 23rpx;
+  margin-top: 20rpx;
+  border-radius: 5px;
+  border-bottom:1rpx solid #EAEAE8; 
+}
+.picture{
+  width: 340rpx;
+  height: 240rpx;
+  margin: 0 auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.top{
+  font-size: 16px;
+  color:dimgray;
+  font-family: "宋体";
+  padding-left: 20rpx; 
+  padding-top: 10rpx;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  align-items:left;
+  justify-content: left;
+  font-size: 14px;
+  color:darkgrey;
+  padding-left: 20rpx; 
+  padding-top: 10rpx;
+}
+.toptag{
+  width: 100rpx;
+}
+.bottom .dash{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 180rpx;
+}

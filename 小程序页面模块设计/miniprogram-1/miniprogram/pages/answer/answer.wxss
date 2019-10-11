@@ -1,0 +1,24 @@
+/* pages/answer/answer.wxss */
+.main{
+  background-color: white;
+}
+.title{
+  margin-left: 75rpx;
+  font-size: 35rpx;
+}
+.btn1{
+  width: 80%;
+  margin-top: 20rpx;
+  background-color: #ffffff;
+  color: #475261;
+  border-radius: 98rpx; 
+  border:solid 1px #e5e5e5;
+}
+.btn2{
+  width: 80%;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  background-color: #19be6b;
+  color: #fcfdf5;
+  border:solid 1px #e5e5e5;
+}

@@ -1,0 +1,14 @@
+<!--pages/practise/practise.wxml-->
+<image style="height: 300rpx;width: 100%;" src="../../images/bg1.jpg"> </image>
+<view class="outer">
+<view class="inner">
+<image class="pic" src="../../images/rubbish1.png"></image>
+<image class="pic" src="../../images/rubbish2.png"></image>
+<image class="pic" src="../../images/rubbish3.png"></image>
+<image class="pic" src="../../images/rubbish4.png"></image>
+</view>
+</view>
+<view class="img">
+<image src="../../images/bg2.png" ></image>
+</view>
+<button  class="btn" >开启混合答题模式</button> 

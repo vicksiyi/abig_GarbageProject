@@ -1,0 +1,28 @@
+/* pages/mixed_answer/mixed_answer.wxss */
+.btn{
+  width: 80%;
+  margin-top: 30rpx;
+  border-radius: 98rpx; 
+  margin-bottom: 30rpx;
+  background-color: #19be6b;
+  color: #fcfdf5;
+  border:solid 1px #e5e5e5;
+}
+.main{
+  display:flex; 
+  flex-direction:column;        
+  justify-content: center; 
+
+}
+.title{
+  margin: 50rpx 65rpx 50rpx 65rpx;
+  padding:10px 20px 10px 20px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10rpx; 
+  box-shadow: darkgrey 3px 3px 3px 3px ;
+}
+.img{
+  display: flex;
+  justify-content: center;  
+}

@@ -1,0 +1,19 @@
+<!--pages/answer/answer.wxml-->
+<view class="main">
+<image src="../../images/pic1.jpg" style="width:100%;height:400rpx;"></image>
+<text class="title">下面属于其他垃圾的是______。</text>
+<button  class="btn1" wx:for="{{title}}"  wx:key="{{item.id}}">{{item.name}}  </button> 
+<button  class="btn2" >确定</button> 
+</view>
+
+<i-page current="{{  current_page }}" total="5" bind:change="handleChange">
+    <view slot="prev">
+        <i-icon type="return"></i-icon>
+        上一题
+    </view>
+    <view slot="next">
+        下一题
+        <i-icon type="enter"></i-icon>
+    </view>
+</i-page>
+

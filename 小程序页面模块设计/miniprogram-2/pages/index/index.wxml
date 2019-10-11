@@ -1,0 +1,35 @@
+<!--index.wxml-->
+  
+<view class="container">
+<!--  搜索框  -->
+        <view class='search'>
+            <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+            <image class="" src='/picture/search.jpg' bindtap='query'></image>
+        </view>
+
+        <view class="all">
+<view class="border"> 
+<view class='Item'>
+ <image class="" src='/picture/1.jpg' bindtap='query'></image>
+<view class='content'>
+<view class="title">名称：烂苹果</view>
+<view class="tag">分类：湿垃圾</view>
+<view class="time"><text>类似：果皮</text></view>
+</view>
+</view>
+<view class="border1">
+<view class="content1">
+<view class="jj">湿垃圾简介</view>
+<view class="text">湿垃圾又称为厨余垃圾、有机垃圾，即易腐垃圾，指食材废料、剩菜剩饭、过期食品、瓜皮果核、花卉绿植、中药药渣等易腐的生物质生活废弃物。
+湿垃圾是居民日常生活及食品加工、饮食服务、单位供餐等活动中产生的垃圾，包括丢弃不用的菜叶、剩菜、剩饭、果皮、蛋壳、茶渣、骨头、动物内脏、鱼鳞、树叶、杂草等，其主要来源为家庭厨房、餐厅、饭店、食堂、市场及其他与食品加工有关的行业.</view>
+</view>
+</view>
+</view>
+</view>
+
+ 
+<view class='button'>
+<i-button bind:click="handleClick">确定</i-button>
+</view>
+
+</view>
