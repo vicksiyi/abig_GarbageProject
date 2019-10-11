@@ -81,7 +81,7 @@ image {
   height: 100rpx;
 }
 
-.content-list{
+.content-list {
   display: flex;
   flex-direction: row;
   height: 200rpx;
@@ -91,11 +91,12 @@ image {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-.content-list-view{
+.content-list-view {
   width: 30%;
   margin: 10rpx;
 }
-.content-list-image{
+
+.content-list-image {
   width: 100%;
   height: 180rpx;
 }
@@ -106,10 +107,12 @@ image {
   position: relative;
   top: -10px;
 }
-.swiper2-list-item{
+
+.swiper2-list-item {
   height: 320rpx;
 }
-.swiper2-item-sty{
+
+.swiper2-item-sty {
   background: #5cc08e;
   width: 160rpx;
   height: 160rpx;
@@ -119,17 +122,76 @@ image {
   flex-direction: column;
   color: #fff;
 }
-.swiper2-item-sty image{
+
+.swiper2-item-sty image {
   width: 40rpx;
   height: 40rpx;
 }
 
-.swiper-text{
+.swiper-text {
   text-align: center;
   line-height: 0;
   font-size: 0.6rem;
 }
 
-.swiper-image-01{
+.swiper-image-01 {
   margin: 36rpx auto;
+}
+
+
+
+/*推荐*/
+.flow {
+  overflow: scroll;
+}
+
+.flow::-webkit-scrollbar {
+  /*隐藏滚轮*/
+  display: none;
+}
+
+.new-thing-page {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  height: 200rpx;
+  padding-top: 30rpx;
+}
+
+.new-thing-page-img image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin: 10rpx;
+}
+
+.new-thing-page-content {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.new-thing-page-content .abstract {
+  height: 120rpx;
+  width: 96%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: #80848f;
+}
+
+.new-thing-page-content .time {
+  color: #bbbec4;
+  margin: 20rpx;
+  font-size: 0.8rem;
+}
+
+.flow-block {
+  scroll-padding-block-end: 200rpx;
+}
+
+.iload-more {
+  color: #5cc08e;
 }

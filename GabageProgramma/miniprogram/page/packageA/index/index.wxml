@@ -1,19 +1,18 @@
 <import src="../../../template/tab.wxml" />
 <!-- 通知 -->
-
 <swiper style='width:100%;height:{{height}}px;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChange" current="{{currentItem}}">
-    <swiper-item item-id="homepage">
-      <template is="tab1" data="{{type,left,color,currentItemList,inputLogo,thisCurrent}}"></template>
-    </swiper-item>
-    <swiper-item item-id="group">
-      <template is="tab2" data="{{currentTab2,spinShow,contentData}}"></template>
-    </swiper-item>
-    <swiper-item item-id="remind">
-      <template is="tab3" data=""></template>
-    </swiper-item>
-    <swiper-item item-id="mine">
-      <template is="tab4" data="{{openid,nickName,avatarUrl}}"></template>
-    </swiper-item>
+  <swiper-item item-id="homepage">
+    <template is="tab1" data="{{type,left,color,currentItemList,inputLogo,thisCurrent}}"></template>
+  </swiper-item>
+  <swiper-item item-id="group">
+    <template is="tab2" data="{{currentTab2,spinShow,contentData,height,spinShow}}"></template>
+  </swiper-item>
+  <swiper-item item-id="remind">
+    <template is="tab3" data=""></template>
+  </swiper-item>
+  <swiper-item item-id="mine">
+    <template is="tab4" data="{{openid,nickName,avatarUrl}}"></template>
+  </swiper-item>
 </swiper>
 <i-toast id="toast" />
 <view class="footer">

@@ -24,11 +24,13 @@
     <block wx:for="{{inputLogo}}">
       <swiper-item class="swiper2-list-item">
         <view style="width:100%;">
-          <view bindtap="{{index==thisCurrent?'swiperClick':''}}"  data-Id="{{index}}" style="width:{{index==thisCurrent?200:160}}rpx;height:{{index==thisCurrent?200:160}}rpx;background:{{index==thisCurrent?'#19be6b':'#5cc08e'}};"  class="swiper2-item-sty">
-            <view  class="swiper-image-01">
+          <view bindtap="{{index==thisCurrent?'swiperClick':''}}" data-Id="{{index}}" style="width:{{index==thisCurrent?200:160}}rpx;height:{{index==thisCurrent?200:160}}rpx;background:{{index==thisCurrent?'#19be6b':'#5cc08e'}};" class="swiper2-item-sty">
+            <view class="swiper-image-01">
               <image style="width:{{index==thisCurrent?80:40}}rpx;height:{{index==thisCurrent?80:40}}rpx;" src="{{item.image}}"></image>
             </view>
-            <view style="font-size:{{index==thisCurrent?0.8:0.6}}rem;" class="swiper-text">{{item.text}}</view>
+            <view style="font-size:{{index==thisCurrent?0.8:0.6}}rem;" class="swiper-text">
+              {{item.text}}
+            </view>
           </view>
         </view>
       </swiper-item>
@@ -42,18 +44,20 @@
     <i-tab key="tab3Tab2" title="其他"></i-tab>
   </i-tabs>
   <!-- 文章类别 -->
-  <!-- <block wx:for="{{contentData}}">
-    <view class="content-list">
-      <view class="content-list-view">
-        <image class="content-list-image" src="{{item.image}}"></image>
+  <view class="flow" style="height:{{height-30}}px;">
+    <i-load-more i-class="iload-more" wx:if="{{spinShow}}" />
+    <block class="flow-block" wx:for="{{contentData}}">
+      <view class="new-thing-page">
+        <view class="new-thing-page-img">
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class="new-thing-page-content">
+          <view class="abstract">{{item.abstract}}</view>
+          <view class="time">{{item.datetime}}</view>
+        </view>
       </view>
-      <view>
-        <view>{{item.datetime}}</view>
-        <view>{{item.abstract}}</view>
-      </view>
-      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
-    </view>
-  </block> -->
+    </block>
+  </view>
 </template>
 <template name="tab3">3</template>
 <template name="tab4">4</template>
