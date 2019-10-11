@@ -13,12 +13,12 @@
   <view class="anglesList"  wx:for="{{find1}}"> 
   <navigator class="anglesNavigator"> 
     <view class="imgBox"> 
-      <image src="{{item.picture}}" mode="aspectFill"></image> 
+      <image src="{{item.image}}" mode="aspectFill"></image> 
     </view> 
     <view class="textBox"> 
-      <text class="title">{{item.title}}</text>
+      <text class="title">{{item.abstract}}</text>
       <text class="tag">{{item.tag}}</text> 
-      <text class="time">{{item.time}}</text> 
+      <text class="time">{{item.datetime}}</text> 
     </view> 
   </navigator> 
   <navigator class="btnFollowed">
@@ -31,10 +31,10 @@
   <view class="all1"  wx:for="{{find1}}">
      <view class="border1">  
     <view class='Item1'>
-     <image class="image1" mode='aspectFill' src="{{item.picture}}"></image>
+     <image class="image1" mode='aspectFill' src="{{item.image}}"></image>
      <view class='content1'>
-      <view class="title1">{{item.title}}</view>
-       <view class="time1">{{item.time}}</view>
+      <view class="title1">{{item.abstract}}</view>
+       <view class="time1">{{item.datetime}}</view>
       </view>
        </view>
 </view>
@@ -51,9 +51,9 @@
       <view wx:for="{{find1}}">
         <navigator url='{{item._id}}'>
           <view class='size' >
-            <image class='picture' mode='aspectFill' src='{{item.picture}}'></image>
+            <image class='picture' mode='aspectFill' src='{{item.image}}'></image>
             <view class="content">
-            <view class="top">{{item.title}}</view>
+            <view class="top">{{item.abstract}}</view>
             <view class="bottom">
              <view class="toptag">{{item.tag}}</view>
              <image class="dash" mode='aspectFill' src='../image/dash.png'></image>

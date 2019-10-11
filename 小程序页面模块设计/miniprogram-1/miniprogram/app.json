@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/mixed_answer/mixed_answer",
     "pages/practise/practise",
     "pages/answer/answer",
-    "pages/mixed_answer/mixed_answer",
     "pages/index/index"
   ],
   "window": {

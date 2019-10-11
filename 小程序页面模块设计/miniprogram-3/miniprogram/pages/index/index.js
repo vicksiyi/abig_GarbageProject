@@ -14,22 +14,15 @@ Page({
   onLoad: function (options) {
     var _this = this;
     //1、引用数据库   
-    const db = wx.cloud.database({
-      //这个是环境ID不是环境名称     
-      env: 'snow-c598ca'
-    })
-    //2、开始查询数据了  news对应的是集合的名称   
-    db.collection('find').get({
-      //如果查询成功的话    
-      success: res => {
+    wx.request({
+      url: 'http://118.178.181.46:5000/gcurl',
+      success(res){
         console.log(res.data)
-        //这一步很重要，给ne赋值，没有这一步的话，前台就不会显示值      
-        this.setData({
-          find1: res.data
+        _this.setData({
+          find1 : res.data
         })
       }
     })
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
