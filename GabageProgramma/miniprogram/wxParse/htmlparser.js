@@ -57,6 +57,7 @@ function HTMLParser(html, handler) {
 					html = html.substring(index + 3);
 					chars = false;
 				}
+				console.log("年");
 
 				// end tag
 			} else if (html.indexOf("</") == 0) {

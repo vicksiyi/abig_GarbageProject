@@ -125,6 +125,7 @@ Page({
   // 滑动箭头
   setInterMargin: function(endList) {
     let _this = this;
+    // 终点位置&起始相对位置
     if (Number(this.data.left) > Number(endList)) {
       var lefts = setInterval(() => {
         _this.setData({
