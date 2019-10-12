@@ -1,5 +1,6 @@
 //index.js
 const { $Toast } = require('../../../dist/base/index');
+const { $Message } = require('../../../dist/base/index');
 const app = getApp()
 
 Page({
@@ -65,7 +66,8 @@ Page({
       }
     ],
     thisCurrent: '',
-    thisPage: ['textPage', 'imagePage', 'videoPage']
+    thisPage: ['textPage', 'imagePage', 'videoPage'],
+    newPageShow: 0
   },
 
   /**
@@ -84,18 +86,7 @@ Page({
       current: res.detail.key
     })
     if (_this.data.current == 'group') {
-      _this.setData({
-        spinShow: true
-      })
-      wx.request({
-        url: 'http://118.178.181.46:5000/gcurl',
-        success(res) {
-          _this.setData({
-            spinShow: false,
-            contentData: res.data
-          })
-        }
-      })
+      _this.requestData('http://118.178.181.46:5000/gcurl', 'tab1Tab2')
       currentNumItem = 1
     } else if (_this.data.current == 'remind') {
       currentNumItem = 2
@@ -176,9 +167,8 @@ Page({
     detail
   }) {
     let _this = this
-    _this.setData({
-      currentTab2: detail.key
-    });
+    console.log(detail.key)
+    _this.requestData('http://118.178.181.46:5000/gcurl', detail.key)
   },
   swiperChange: function (res) {
     let _this = this
@@ -196,6 +186,52 @@ Page({
       $Toast({
         content: '敬请期待'
       });
+    }
+  },
+  switchOnChange(event) {
+    let _this = this
+    if (_this.data.newPageShow) {
+      _this.setData({
+        newPageShow: 0
+      })
+    } else {
+      _this.setData({
+        newPageShow: 1
+      })
+    }
+    _this.requestData('http://118.178.181.46:5000/gcurl')
+  },
+  requestData: function (url, tab = this.data.currentTab2) {
+    let _this = this
+    _this.setData({
+      spinShow: true,
+      currentTab2: tab
+    })
+    try {
+      wx.request({
+        url: url,
+        success(res) {
+          if (res.statusCode == 200) {
+            _this.setData({
+              contentData: res.data
+            })
+          } else {
+            $Message({
+              content: '获取数据失败:' + res.statusCode,
+              type: 'error'
+            });
+          }
+          _this.setData({
+            spinShow: false
+          })
+        },
+        fail(err) {
+          console.log('err')
+        }
+      })
+    }
+    catch (err) {
+      console.log("r")
     }
   }
 })

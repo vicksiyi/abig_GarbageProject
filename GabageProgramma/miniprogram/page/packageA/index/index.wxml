@@ -5,7 +5,7 @@
     <template is="tab1" data="{{type,left,color,currentItemList,inputLogo,thisCurrent}}"></template>
   </swiper-item>
   <swiper-item item-id="group">
-    <template is="tab2" data="{{currentTab2,spinShow,contentData,height,spinShow}}"></template>
+    <template is="tab2" data="{{currentTab2,spinShow,contentData,height,spinShow,newPageShow}}"></template>
   </swiper-item>
   <swiper-item item-id="remind">
     <template is="tab3" data=""></template>
@@ -15,6 +15,7 @@
   </swiper-item>
 </swiper>
 <i-toast id="toast" />
+<i-message id="message" />
 <view class="footer">
   <i-tab-bar current="{{ current }}" color="#19be6b" bindchange="handleChange">
     <i-tab-bar-item key="homepage" icon="camera" current-icon="camera_fill" title="识别"></i-tab-bar-item>

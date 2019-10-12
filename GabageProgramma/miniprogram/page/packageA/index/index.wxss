@@ -195,3 +195,95 @@ image {
 .iload-more {
   color: #5cc08e;
 }
+
+
+
+/*热门*/
+.border1 {
+  width: 100%;
+  border-radius: 2rpx;
+  margin: 20rpx auto;
+}
+
+.all1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Item1 {
+  width: 90%;
+  margin: auto;
+}
+
+.Item1 .image1 {
+  height: 150px;
+  margin: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.Item1 .content1 {
+  display: block;
+  background-color: #000;
+  color: #fff;
+  opacity: 0.7;
+  margin-top: -63rpx;
+  padding: 5rpx;
+}
+
+.Item1 .content1 .title1 {
+  font-size: 0.9rem;
+  color: #fff;
+  font-family: "宋体";
+  padding: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Item1 .content1 .time1 {
+  color: #fff;
+  float: right;
+  margin-top: -48rpx;
+  font-size: 15px;
+  font-family: "宋体";
+  padding-right: 15rpx;
+}
+
+.switch {
+  position: absolute;
+  bottom: 50rpx;
+  right: 40rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #5cc08e;
+  border-radius: 50%;
+}
+
+.switch view {
+  width: 56rpx;
+  margin: 15% auto;
+}
+
+.switch image {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.switch:active {
+  animation: 1s rotatefresh 1;
+}
+
+/* 点一下转一圈 */
+@keyframes rotatefresh {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(720deg);
+    transition-duration: 1s;
+    transition: 1s;
+  }
+}

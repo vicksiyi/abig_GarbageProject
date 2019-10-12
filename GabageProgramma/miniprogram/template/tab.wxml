@@ -43,20 +43,45 @@
     <i-tab key="tab2Tab2" title="热门"></i-tab>
     <i-tab key="tab3Tab2" title="其他"></i-tab>
   </i-tabs>
-  <!-- 文章类别 -->
-  <view class="flow" style="height:{{height-30}}px;">
+  <!-- 文章类别 样式1 -->
+  <view wx:if="{{newPageShow == 0}}" class="flow" style="height:{{height-30}}px;">
     <i-load-more i-class="iload-more" wx:if="{{spinShow}}" />
-    <block class="flow-block" wx:for="{{contentData}}">
-      <view class="new-thing-page">
-        <view class="new-thing-page-img">
-          <image src="{{item.image}}"></image>
+    <view wx:else>
+      <block class="flow-block" wx:for="{{contentData}}">
+        <view class="new-thing-page">
+          <view class="new-thing-page-img">
+            <image src="{{item.image?item.image:'../resources/images/timg.jpg'}}"></image>
+          </view>
+          <view class="new-thing-page-content">
+            <view class="abstract">{{item.abstract}}</view>
+            <view class="time">{{item.datetime}}</view>
+          </view>
         </view>
-        <view class="new-thing-page-content">
-          <view class="abstract">{{item.abstract}}</view>
-          <view class="time">{{item.datetime}}</view>
+      </block>
+    </view>
+  </view>
+  <!-- 文章类别 样式2 -->
+  <view wx:else class="flow" style="height:{{height-30}}px;">
+    <i-load-more i-class="iload-more" wx:if="{{spinShow}}" />
+    <view wx:else>
+      <block class="flow2-block" wx:for="{{contentData}}">
+        <view class="border1">
+          <view class='Item1'>
+            <image class="image1" mode='aspectFill' src="{{item.image?item.image:'../resources/images/timg.jpg'}}"></image>
+            <view class='content1'>
+              <view class="time1">{{item.datetime}}</view>
+              <view class="title1">{{item.abstract}}</view>
+            </view>
+          </view>
         </view>
-      </view>
-    </block>
+      </block>
+    </view>
+  </view>
+  <!-- 样式开关 -->
+  <view class="switch">
+    <view bindtap="switchOnChange">
+      <image src="../resources/images/switch.png"></image>
+    </view>
   </view>
 </template>
 <template name="tab3">3</template>
