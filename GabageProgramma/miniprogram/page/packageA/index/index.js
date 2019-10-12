@@ -16,7 +16,7 @@ Page({
     indicatorDots: false,
     autoplay: false,
     circular: true,
-    currentItem: 0,
+    currentItem: 0,  //第几个
     currentItemList: 0,
     height: '',
     left: "70",
@@ -67,7 +67,9 @@ Page({
     ],
     thisCurrent: '',
     thisPage: ['textPage', 'imagePage', 'videoPage'],
-    newPageShow: 0
+    newPageShow: 0,
+    classPage: ['垃圾分类', '圾不可错', '分类'],
+    classPageNum: ['tab1Tab2', 'tab2Tab2', 'tab3Tab2']
   },
 
   /**
@@ -86,7 +88,7 @@ Page({
       current: res.detail.key
     })
     if (_this.data.current == 'group') {
-      _this.requestData('http://118.178.181.46:5000/gcurl', 'tab1Tab2')
+      _this.requestData('http://118.178.181.46:5000/gcurl/' + _this.data.classPage[0], 'tab1Tab2')
       currentNumItem = 1
     } else if (_this.data.current == 'remind') {
       currentNumItem = 2
@@ -168,7 +170,9 @@ Page({
   }) {
     let _this = this
     console.log(detail.key)
-    _this.requestData('http://118.178.181.46:5000/gcurl', detail.key)
+    // 找出位置
+    let numTemp = _this.numLocation(detail.key)
+    _this.requestData('http://118.178.181.46:5000/gcurl/' + _this.data.classPage[numTemp], detail.key)
   },
   swiperChange: function (res) {
     let _this = this
@@ -199,8 +203,14 @@ Page({
         newPageShow: 1
       })
     }
-    _this.requestData('http://118.178.181.46:5000/gcurl')
+    let numTemp = _this.numLocation(_this.data.currentTab2)
+    _this.requestData('http://118.178.181.46:5000/gcurl/' + _this.data.classPage[numTemp])
   },
+  /**
+   * @param {url} 请求地址
+   * @param {tab} 所在选择
+   * @return {data} 响应数据
+   */
   requestData: function (url, tab = this.data.currentTab2) {
     let _this = this
     _this.setData({
@@ -232,6 +242,19 @@ Page({
     }
     catch (err) {
       console.log("r")
+    }
+  },
+  /**
+   * 
+   * @param {key} 选择名
+   * @return {i} 所在位置 
+   */
+  numLocation: function (key) {
+    let _this = this
+    for (let i = 0; i < _this.data.classPageNum.length; i++) {
+      if (_this.data.classPageNum[i] == key) {
+        return i
+      }
     }
   }
 })

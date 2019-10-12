@@ -287,3 +287,50 @@ image {
     transition: 1s;
   }
 }
+
+
+
+
+/* 答题 */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img image {
+  display: flex;
+  justify-content: center;
+}
+
+.main-all {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 360rpx;
+  margin: 30rpx auto;
+}
+
+.content-title {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.main-content {
+  padding-left: 10rpx;
+  width: 80%;
+  margin: 30rpx auto;
+  font-size: 0.8rem;
+  border: #bbbec4;
+}
+
+.main-content view {
+  padding-top: 20rpx;
+}
+.main-content view strong{
+  font-weight: bold;
+}
+.main-content view text {
+  line-height: 12rpx;
+  color: #2d8cf0;
+}

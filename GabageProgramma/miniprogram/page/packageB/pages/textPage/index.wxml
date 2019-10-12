@@ -3,8 +3,44 @@
     <input type='text' placeholder='输入你想要查询的名称' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
     <image class="" src='../../resources/images/search.jpg' bindtap='query'></image>
 </view>
+<view style="width:90%;margin:30rpx auto;">
+    <i-card>
+        <view slot="content">
+            <block wx:for="{{dataColor}}">
+                <i-tag class="i-tags" bindtap="query" data-Msg="{{item.msg}}" name="单个标签" color="{{item.color}}">
+                    {{item.msg}}
+                </i-tag>
+            </block>
+        </view>
+        <view slot="footer">历史搜索</view>
+    </i-card>
+</view>
 <i-load-more wx:if="{{loadShowLoad}}" />
-<i-load-more wx:else tip="暂无数据" loading="{{ loadShow }}" />
+<!-- 查找出来的列表 -->
+<view wx:if="{{showEm}}" class="img-zs">
+    <image src="../../resources/images/zsimg.png"></image>
+</view>
+<view wx:if="{{!showEm}}">
+    <i-load-more tip="暂无数据" loading="{{ loadShow }}" />
+</view>
+<view wx:if="{{showEm}}" class="all-list">
+    <block wx:for="{{value}}" wx:key="{{code}}">
+        <view class="tr bg-g" bindtap="showModelFun" data-Id="{{index}}" wx:if="{{index % 2 == 0}}">
+            <view class="td td1">
+                <text>{{index+1}}</text>
+            </view>
+            <view class="td">{{item.name}}</view>
+            <view class="td">{{item.type}}</view>
+        </view>
+        <view class="tr" bindtap="showModelFun" data-Id='{{index}}' wx:else>
+            <view class="td td1">
+                <text>{{index+1}}</text>
+            </view>
+            <view class="td">{{item.name}}</view>
+            <view class="td">{{item.type}}</view>
+        </view>
+    </block>
+</view>
 <!-- 弹窗通知 -->
 <div class="cover" bindtap="close" wx:if="{{showModel}}">
     <view class="model" style="background:{{color}}">
@@ -14,9 +50,7 @@
             <view wx:if="{{imageUrl}}" class="model-content-img">
                 <image src="{{imageUrl}}"></image>
             </view>
-            <view wx:else class="model-content-img-text">
-                {{imageUrlText}}
-            </view>
+            <view wx:else class="model-content-img-text">{{imageUrlText}}</view>
             <view class="model-content-text">{{contentText}}</view>
         </view>
         <i-load-more loading="{{ false }}" />

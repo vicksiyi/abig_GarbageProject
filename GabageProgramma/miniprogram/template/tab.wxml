@@ -84,5 +84,26 @@
     </view>
   </view>
 </template>
-<template name="tab3">3</template>
+<!-- 答题 -->
+<template name="tab3">
+  <view class="main">
+    <view class="main-all">
+      <view class="content-title">规则</view>
+      <view class="main-content">
+        <view>1、一共分为<strong>限时答题</strong>、<strong>无限答题</strong>、<strong>在线测试</strong>三大答题区</view>
+        <view>2、答题所得奖励<strong>可兑换</strong>东西</view>
+        <view>3、答题所得积分前十名<strong>可上榜</strong></view>
+        <view>备注：点击<text>“进入答题区”</text>开始你的答题吧！</view>
+      </view>
+    </view>
+    <view style="width:80%;margin:auto;">
+      <i-button bind:click="handleClick" type="success">进入答题区</i-button>
+    </view>
+    <view class="img">
+      <view style="margin:40rpx auto;width:80%">
+        <image style="height: 400rpx;" src="http://118.178.181.46/timg.gif"></image>
+      </view>
+    </view>
+  </view>
+</template>
 <template name="tab4">4</template>
