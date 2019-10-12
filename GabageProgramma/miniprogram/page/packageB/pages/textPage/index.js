@@ -54,9 +54,10 @@ Page({
           })
           // 当选择的是历史记录时候
           if (!e.currentTarget.dataset.msg) {
+            // 添加历史记录
             _this.localStore(res.data[0].type, queryName)
           }
-
+          // 选择描述数据 
           for (let i = 0; i < _this.data.typeText.length; i++) {
             if (_this.data.typeText[i].name == res.data[0].type) {
               _this.setData({
@@ -118,6 +119,11 @@ Page({
       }
     })
   },
+  /**
+   * 添加历史记录
+   * @param {type} 类别
+   * @param {queryName} 名字
+   */
   localStore: function (type, queryName) {
     let _this = this
     wx.getStorage({
@@ -151,6 +157,11 @@ Page({
       }
     })
   },
+  /**
+   * 根据类别选颜色
+   * @param {type} 类别  
+   * @return {color} 颜色
+   */
   selectColor: function (type) {
     let _this = this
     console.log(type)
@@ -172,9 +183,12 @@ Page({
         color = _this.data.colorClass[0]
         break;
     }
-    console.log(color)
     return color
   },
+  /**
+   * 当没搜索到时候，获取数据
+   * @param {name} 搜索物品
+   */
   requestData: function (name) {
     let _this = this
     let temp = []
@@ -192,6 +206,10 @@ Page({
       }, 2000);
     })
   },
+  /**
+   * 显示model
+   * @param {res} 获取点击索引  
+   */
   showModelFun: function (res) {
     let _this = this
     let test = 0
