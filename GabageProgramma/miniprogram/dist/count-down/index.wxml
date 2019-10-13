@@ -1,4 +1,5 @@
-<text class="countdown-class">
+<text class="countdown-class" style="color:{{color}}">
   {{time}}
 </text>
+<image wx:if="{{showImg}}" class="img-01" src="../images/time.gif"></image>
 

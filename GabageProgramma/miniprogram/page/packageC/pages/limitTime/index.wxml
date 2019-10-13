@@ -1,0 +1,7 @@
+<import src="../../resources/template/title.wxml" />
+<!-- 倒计时 -->
+<view class="time-color">
+    <i-count-down target="{{targetTime}}" countdown-class="big" bind:callback="endChange" clear-timer="{{clearTimer}}"></i-count-down>
+</view>
+<!-- 答题区 -->
+<template is="title" data="{{selectData}}"></template>

@@ -1,0 +1,6 @@
+.img-01{
+    width: 70rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 44rpx;
+}

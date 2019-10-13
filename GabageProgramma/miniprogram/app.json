@@ -21,7 +21,10 @@
     {
       "root": "page/packageC/",
       "pages": [
-        "pages/index/index"
+        "pages/index/index",
+        "pages/limitTime/index",
+        "pages/infiniteNum/index",
+        "pages/testTitle/index"
       ]
     },
     {

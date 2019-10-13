@@ -1,1 +1,12 @@
-/* page/packageC//pages/index/index.wxss */
+.img{
+    width: 90%;
+    margin: 50rpx 46rpx;
+}
+.img image{
+    height: 370rpx;
+}
+
+.button-list{
+    width: 90%;
+    margin: auto;
+}

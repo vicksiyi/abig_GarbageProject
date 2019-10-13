@@ -1,2 +1,11 @@
-<!--page/packageC//pages/index/index.wxml-->
-<text>page/packageC//pages/index/index.wxml</text>
+<view class="img">
+    <image src="http://118.178.181.46/gcImage/timg2.gif"></image>
+</view>
+<!-- 答题选择 -->
+<view class="button-list">
+    <block wx:for="{{buttonText}}">
+        <view bindtap="buttonClick" data-Id="{{index}}">
+            <i-button type="success">{{item.name}}</i-button>
+        </view>
+    </block>
+</view>

@@ -80,6 +80,9 @@ Page({
     // wx.navigateTo({
     //   url:"../../packageB/pages/textPage/index"
     // })
+    // wx.navigateTo({
+    //   url: "../../packageC/pages/limitTime/index"
+    // })
   },
   handleChange: function (res) {
     let _this = this;
@@ -184,7 +187,7 @@ Page({
     let _this = this
     if (res.currentTarget.dataset.id == 0) {
       wx.navigateTo({
-        url: '../../packageB/pages/' + _this.data.thisPage[res.currentTarget.dataset.id] + '/index'
+        url: `../../packageB/pages/${_this.data.thisPage[res.currentTarget.dataset.id]}/index`
       })
     } else {
       $Toast({
@@ -256,5 +259,10 @@ Page({
         return i
       }
     }
+  },
+  navTitle: function () {
+    wx.navigateTo({
+      url: '../../packageC/pages/index/index'
+    })
   }
 })

@@ -97,11 +97,11 @@
       </view>
     </view>
     <view style="width:80%;margin:auto;">
-      <i-button bind:click="handleClick" type="success">进入答题区</i-button>
+      <i-button bind:click="navTitle" type="success">进入答题区</i-button>
     </view>
     <view class="img">
       <view style="margin:40rpx auto;width:80%">
-        <image style="height: 400rpx;" src="http://118.178.181.46/timg.gif"></image>
+        <image style="height: 400rpx;" src="http://118.178.181.46/gcImage/timg.gif"></image>
       </view>
     </view>
   </view>

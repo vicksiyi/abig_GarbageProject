@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    buttonText: [
+      {
+        "click": "limitTime",
+        "name": "限时答题"
+      },
+      {
+        "click": "infiniteNum",
+        "name": "无限答题"
+      },
+      {
+        "click": "testTitle",
+        "name": "在线测试"
+      }
+    ]
   },
 
   /**
@@ -28,39 +41,11 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  buttonClick: function (e) {
+    // e.currentTarget.dataset.id
+    let _this = this
+    wx.navigateTo({
+      url: `../../pages/${_this.data.buttonText[e.currentTarget.dataset.id].click}/index`
+    })
   }
 })

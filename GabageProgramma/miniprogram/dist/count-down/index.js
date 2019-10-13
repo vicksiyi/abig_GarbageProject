@@ -10,7 +10,9 @@ Component({
     data: {
         time: '',
         resultFormat: [],
-        changeFormat: false
+        changeFormat: false,
+        color: '#19be6b',
+        showImg: false
     },
     ready() {
         this.getFormat();
@@ -43,6 +45,7 @@ Component({
             }, 1000);
         },
         getLastTime() {
+            let _this = this
             const data = this.data;
             const gapTime = Math.ceil((data.target - new Date().getTime()) / 1000);
             let result = '';
@@ -60,6 +63,24 @@ Component({
 
                 if (data.changeFormat) time = `${hour}${format[1]}${minute}${format[2]}${second}${format[3]}`;
                 else time = `${hour}:${minute}:${second}`;
+
+                // 修改源码---->加闹钟
+                if (hour == 0 && minute == 0 && second <= 10) {
+                    _this.setData({
+                        color: '#ed3f14'
+                    })
+                    if (second <= 1) {
+                        setTimeout(() => {
+                            _this.setData({
+                                showImg: false
+                            })
+                        }, 1000)
+                    } else {
+                        _this.setData({
+                            showImg: true
+                        })
+                    }
+                }
 
                 if (!data.clearTimer) this.init.call(this);
             } else {
