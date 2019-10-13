@@ -51,6 +51,7 @@
     height: 250rpx;
     font-size: 0.8rem;
     overflow: auto;
+    -webkit-overflow-scrolling: touch
 }
 
 .model-content image {
@@ -67,6 +68,7 @@
 .model-content-text {
     height: 100rpx;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch
 }
 
 .model-all {
@@ -161,6 +163,7 @@ view i-tag {
     height: 666rpx;
     overflow: scroll;
     font-size: 0.9rem;
+    -webkit-overflow-scrolling: touch
 }
 
 .img-zs {

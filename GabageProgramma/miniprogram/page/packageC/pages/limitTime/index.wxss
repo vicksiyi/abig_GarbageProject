@@ -5,7 +5,9 @@
     text-align: center;
     color: #19be6b;
 }
-
+swiper{
+    height: 100%;
+}
 page {
     background: #f8f8f9;
 }

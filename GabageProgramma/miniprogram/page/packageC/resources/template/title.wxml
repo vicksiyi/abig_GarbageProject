@@ -1,36 +1,42 @@
 <!-- 答题 -->
 <template name="title">
     <view class="title-block">
-        <!-- padding -->
-        <view class="title-block-padding">
-            <!-- 题目  1/100 -->
-            <view class="title-block-title">
-                <view>题目</view>
-                <view class="title-block-text">
-                    <text>1</text>
-                    /20
-                </view>
-            </view>
-            <!-- name -->
-            <view class="title-name">白芨等</view>
-            <!-- 问题 -->
-            <view class="title-pro">属于以下哪种分类?</view>
-            <!-- 选择区 -->
-            <view class="select">
-                <!-- 选择 -->
-                <view class="select-title">请选择:</view>
-                <!-- 类别 -->
-                <view wx:for="{{selectData}}">
-                    <view class="select-content select{{index}}" bindtap="select"  data-Id="{{index}}">
-                        <!-- logo -->
-                        <view class="logo" style="background:{{item.color}}">
-                            <image src="{{item.logo}}"></image>
+        <swiper current="{{currentItem}}" easing-function="linear" >
+            <block wx:for="{{valueTitle}}" wx:key="id">
+                <swiper-item>
+                    <!-- padding -->
+                    <view class="title-block-padding">
+                        <!-- 题目  1/100 -->
+                        <view class="title-block-title">
+                            <view>题目</view>
+                            <view class="title-block-text">
+                                <text>{{index+1}}</text>
+                                /20
+                            </view>
                         </view>
-                        <!-- text -->
-                        <view class="select-content-text">{{item.name}}</view>
+                        <!-- name -->
+                        <view class="title-name">{{item.name}}</view>
+                        <!-- 问题 -->
+                        <view class="title-pro">属于以下哪种分类?</view>
+                        <!-- 选择区 -->
+                        <view class="select">
+                            <!-- 选择 -->
+                            <view class="select-title">请选择:</view>
+                            <!-- 类别 -->
+                            <view wx:for="{{selectData}}" wx:for-item="twodata" wx:for-index="twoindex" wx:key="logo">
+                                <view class="select-content select{{twoindex}}" bindtap="select" data-Id="{{twoindex}}" data-Index="{{index}}">
+                                    <!-- logo -->
+                                    <view class="logo" style="background:{{twodata.color}}">
+                                        <image src="{{twodata.logo}}"></image>
+                                    </view>
+                                    <!-- text -->
+                                    <view class="select-content-text">{{twodata.name}}</view>
+                                </view>
+                            </view>
+                        </view>
                     </view>
-                </view>
-            </view>
-        </view>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
 </template>

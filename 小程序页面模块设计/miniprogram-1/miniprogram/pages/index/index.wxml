@@ -1,2 +1,15 @@
-<!--index.wxml-->
-<view>index.wxml</view>
+<view class="movie">
+  <view class="movie-01">
+    <image class="movie-img" src="https://liangcang-material.alicdn.com/prod/upload/fb6991bb51f24db3aad9284dc226b864.jpg?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"></image>
+  </view>
+  <view class="movie-info">
+    <view class="movie-title">哪吒之魔童降世·爆款</view>
+    <view>观众评分:9.8</view>
+    <view>主演:
+      <text>小陈</text>
+      <text>小庭</text>
+      <text>小威</text>
+    </view>
+    <view>年份:2019</view>
+  </view>
+</view>

@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "i-count-down": "../../../dist/count-down/index"
+    "i-count-down": "../../../dist/count-down/index",
+    "i-spin": "../../../dist/spin/index",
+    "i-message": "../../../dist/message/index"
   },
   "navigationBarTitleText": "限时答题ing..."
 }

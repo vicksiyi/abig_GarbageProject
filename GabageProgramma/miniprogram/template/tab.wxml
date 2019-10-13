@@ -78,7 +78,7 @@
     </view>
   </view>
   <!-- 样式开关 -->
-  <view class="switch">
+  <view class="switch" hover-class="switch-hover">
     <view bindtap="switchOnChange">
       <image src="../resources/images/switch.png"></image>
     </view>

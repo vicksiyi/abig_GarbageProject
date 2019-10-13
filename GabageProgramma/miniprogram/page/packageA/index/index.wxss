@@ -143,6 +143,7 @@ image {
 /*推荐*/
 .flow {
   overflow: scroll;
+  -webkit-overflow-scrolling: touch
 }
 
 .flow::-webkit-scrollbar {
@@ -271,7 +272,7 @@ image {
   height: 56rpx;
 }
 
-.switch:active {
+.switch-hover {
   animation: 1s rotatefresh 1;
 }
 
@@ -327,9 +328,11 @@ image {
 .main-content view {
   padding-top: 20rpx;
 }
-.main-content view strong{
+
+.main-content view strong {
   font-weight: bold;
 }
+
 .main-content view text {
   line-height: 12rpx;
   color: #2d8cf0;

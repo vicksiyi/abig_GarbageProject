@@ -4,4 +4,6 @@
     <i-count-down target="{{targetTime}}" countdown-class="big" bind:callback="endChange" clear-timer="{{clearTimer}}"></i-count-down>
 </view>
 <!-- 答题区 -->
-<template is="title" data="{{selectData}}"></template>
+<template is="title" data="{{selectData,valueTitle,currentItem}}"></template>
+<i-message id="message" />
+<i-spin size="large" fix wx:if="{{ spinNow }}"></i-spin>
