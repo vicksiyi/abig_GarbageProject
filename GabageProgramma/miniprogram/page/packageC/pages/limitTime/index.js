@@ -37,8 +37,15 @@ Page({
     ],
     spinNow: true,
     valueTitle: [],
-    valueTitleTest: new Array(20).fill(0),
-    currentItem: 0
+    valueTitleTest: new Array(20).fill(5),
+    currentItem: 0,
+    currentNum: 0,
+    bottonText: '查看答案',
+    endValue: [],
+    showMetch: false,
+    numMetch: 0,
+    numPersent: 0,
+    className: ''
   },
 
   /**
@@ -65,7 +72,7 @@ Page({
           _this.setData({
             valueTitle: res.data,
             spinNow: false,
-            targetTime: new Date().getTime() + 60 * 1000
+            targetTime: new Date().getTime() + 10 * 1000
           })
         }
       })
@@ -76,10 +83,22 @@ Page({
     });
   },
   endChange: function () {
+    let _this = this
     $Message({
       content: '时间到',
       type: 'error'
     });
+    let metchData = _this.replaceFun(this.data.valueTitleTest)
+    let persent = parseInt(100 - (metchData.empty / 20) * 100)
+    let resultTemp = metchData.num * 5 * persent * 0.01
+    _this.setData({
+      endValue: metchData.textTempSwitch,
+      showMetch: true,
+      numMetch: metchData.num,
+      numPersent: persent,
+      result: resultTemp,
+      className: _this.classNameFunc(resultTemp)
+    })
   },
   /**
    * 选项
@@ -87,8 +106,6 @@ Page({
    */
   select: function (e) {
     let _this = this
-    let num = 0
-    let metchValue = []
     let temp = `valueTitleTest[${e.currentTarget.dataset.index}]`
     _this.setData({
       [temp]: e.currentTarget.dataset.id
@@ -99,12 +116,16 @@ Page({
       })
     } else {
       let metchData = _this.replaceFun(this.data.valueTitleTest)
-      num = metchData.num
-      metchValue = metchData.textTempSwitch
-      $Message({
-        content: `对了${num}条题`,
-        type: 'success'
-      });
+      let persent = parseInt(100 - (metchData.empty / 20) * 100)
+      let resultTemp = metchData.num * 5 * persent * 0.01
+      _this.setData({
+        endValue: metchData.textTempSwitch,
+        showMetch: true,
+        numMetch: metchData.num,
+        numPersent: persent,
+        result: resultTemp,
+        className: _this.classNameFunc(resultTemp)
+      })
     }
   },
   /**
@@ -117,8 +138,9 @@ Page({
     let textTempSwitch = []
     let testMetch = false
     let num = 0
+    let empty = 0
     array.map((value, index) => {
-      if (_this.data.valueTitle[index].type != ('可回收垃圾' || '有害垃圾' || '湿垃圾' || '干垃圾')) {
+      if (_this.switchMetchFunc(_this.data.valueTitle[index].type)) {
         testMetch = ('其他垃圾' == _this.switchFunc(value))
       } else {
         testMetch = (_this.data.valueTitle[index].type == _this.switchFunc(value))
@@ -126,15 +148,21 @@ Page({
       if (testMetch) {
         num++
       }
+      // 完成百分率
+      if (value == 5) {
+        empty++
+      }
       textTempSwitch.push({
         'judge': testMetch,
         'typeTrue': _this.data.valueTitle[index].type,
-        'text': _this.switchFunc(value)
+        'text': _this.switchFunc(value),
+        'name': _this.data.valueTitle[index].name
       })
     })
-    console.log(num, textTempSwitch)
+    console.log(array)
     return {
       'num': num,
+      'empty': empty,
       'textTempSwitch': textTempSwitch
     }
   },
@@ -158,10 +186,120 @@ Page({
       case 3:
         textTemp = '干垃圾'
         break;
-      default:
+      case 4:
         textTemp = '其他垃圾'
+        break;
+      default:
+        textTemp = '未选'
         break;
     }
     return textTemp
+  },
+  // 查看分数
+  showMetch: function () {
+    let _this = this
+    if (_this.data.bottonText == '查看答案') {
+      _this.setData({
+        bottonText: '查看分数',
+        currentNum: 1
+      })
+    } else {
+      _this.setData({
+        bottonText: '查看答案',
+        currentNum: 0
+      })
+    }
+  },
+  /**
+   * 除了四大类型以外其他都是其他类型
+   * @param {type} 类型 
+   * @return {tempTest} 格式化后类型
+   */
+  switchMetchFunc: function (type) {
+    let tempTest = false
+    switch (type) {
+      case '可回收垃圾':
+      case '有害垃圾':
+      case '湿垃圾':
+      case '干垃圾':
+        tempTest = false
+        break;
+      default:
+        tempTest = true
+        break;
+    }
+    return tempTest
+  },
+  // 上传错误
+  submitError: function (e) {
+    console.log(e)
+  },
+  onceAgain: function () {
+    wx.redirectTo({
+      url: './index'
+    })
+  },
+  close: function () {
+    wx.redirectTo({
+      url: '../index/index'
+    })
+  },
+  /**
+   * 根据得分给称号
+   * @param {num} 得分 
+   * @return {text} 称号
+   */
+  classNameFunc: function (num) {
+    let texTemp = ['初出茅庐', '初窥门径', '略有小成', '炉火纯青', '傲视群雄', '登峰造极', '所向披靡', '举世无双', '答题星耀', '答题机器']
+    let text = ''
+    let data = [
+      {
+        max: 10,
+        min: 0
+      },
+      {
+        max: 20,
+        min: 10
+      },
+      {
+        max: 30,
+        min: 20
+      },
+      {
+        max: 40,
+        min: 30
+      },
+      {
+        max: 50,
+        min: 40
+      },
+      {
+        max: 60,
+        min: 50
+      },
+      {
+        max: 70,
+        min: 60
+      },
+
+      {
+        max: 80,
+        min: 70
+      },
+      {
+        max: 90,
+        min: 80
+      }
+    ]
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i].min, data[i].max)
+      if (num >= data[i].min && num < data[i].max) {
+        text = texTemp[i]
+        break;
+      } else {
+        text = '答题机器'
+      }
+    }
+    return text
   }
 })

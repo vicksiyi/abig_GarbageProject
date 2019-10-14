@@ -2,7 +2,10 @@
   "usingComponents": {
     "i-count-down": "../../../dist/count-down/index",
     "i-spin": "../../../dist/spin/index",
-    "i-message": "../../../dist/message/index"
+    "i-message": "../../../dist/message/index",
+    "i-button": "../../../dist/button/index",
+    "i-notice-bar": "../../../dist/notice-bar/index",
+    "i-tag": "../../../dist/tag/index"
   },
   "navigationBarTitleText": "限时答题ing..."
 }

@@ -5,5 +5,91 @@
 </view>
 <!-- 答题区 -->
 <template is="title" data="{{selectData,valueTitle,currentItem}}"></template>
+<!-- 弹框 -->
+<view class="model-title" wx:if="{{showMetch}}">
+    <view class="model-title-padding">
+        <view class="model-padding-content">
+            <view class="padding-title">答题完毕</view>
+            <view class="padding-num">
+                获得
+                <text>{{result}}</text>
+                分
+            </view>
+            <view class="padding-name">
+                获得「
+                <text>{{className}}</text>
+                」称号
+            </view>
+            <view class="padding-max">
+                超过了
+                <text>19.7%</text>
+                的垃圾分类达人,继续努力哟!
+            </view>
+            <view class="padding-img">
+                <swiper current="{{currentNum}}">
+                    <swiper-item>
+                        <view class="padding-img-01">
+                            <image src="../../resources/images/win.png"></image>
+                        </view>
+                    </swiper-item>
+                    <swiper-item>
+                        <view class="tr bg-g">
+                            <view class="td td1">
+                                <text>名称</text>
+                            </view>
+                            <view class="td">正确类别</view>
+                            <view class="td">所选类别</view>
+                        </view>
+                        <view class="padding-swiper-block">
+                            <block wx:for="{{endValue}}" wx:key="{{code}}">
+                                <view class="tr" style="color:{{item.judge?'':'red'}};" bindtap="submitError" data-Id='{{index}}'>
+                                    <view class="td td1">
+                                        <text>{{item.name}}</text>
+                                    </view>
+                                    <view class="td">{{item.typeTrue}}</view>
+                                    <view class="td">{{item.text}}</view>
+                                </view>
+                            </block>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="scrol-view" wx:if="{{bottonText=='查看分数'}}">
+                <i-notice-bar icon="systemprompt" speed="5000" i-class="scrol-view-font" loop>
+                    答案可上下滑动
+                </i-notice-bar>
+            </view>
+            <view class="padding-win">
+                <view>
+                    答对:
+                    <text>{{numMetch}}</text>
+                    题
+                </view>
+                <view>
+                    完成率:
+                    <text>{{numPersent}}%</text>
+                </view>
+                <view>
+                    挑战状态:
+                    <text>{{result>=60?'成功':'失败'}}</text>
+                </view>
+            </view>
+            <view class="padding-button">
+                <i-button bind:click="onceAgain" type="warning">再次挑战</i-button>
+            </view>
+            <view class="padding-row-botton">
+                <view>
+                    <i-button bind:click="showMetch" type="success">{{bottonText}}</i-button>
+                </view>
+                <view>
+                    <i-button bind:click="handleClick" type="error">分享成绩</i-button>
+                </view>
+            </view>
+            <view bindtap="close" class="model-close">
+                <i-tag  class="i-tags" name="标签一" type="border" color="red">←退出限时答题</i-tag>
+            </view>
+        </view>
+    </view>
+</view>
 <i-message id="message" />
 <i-spin size="large" fix wx:if="{{ spinNow }}"></i-spin>
