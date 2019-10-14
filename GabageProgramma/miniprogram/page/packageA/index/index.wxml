@@ -1,2 +1,22 @@
-<!--page/packageE//pages/index/index.wxml-->
-<text>page/packageE//pages/index/index.wxml</text>
+<view class="page-all">
+    <swiper previous-margin="94rpx" current="{{currentImg}}" circular="true" next-margin="94rpx" bindchange="themsChange">
+        <block wx:for="{{thems}}" wx:key="*this">
+            <swiper-item>
+                <view class="thems-img" style="{{index == currentImg?'':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
+                    <image src="{{item.image}}"></image>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <swiper previous-margin="320rpx" current="{{currentImg}}" circular="true" next-margin="320rpx" bindchange="themsChange">
+        <view class="thems-list">
+            <block wx:for="{{thems}}" wx:key="*this">
+                <swiper-item>
+                    <view class="thems-logo" style="{{index == currentImg?'width:80rpx;height:80rpx':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
+                        <image style="{{index == currentImg ? 'width:80rpx;height:80rpx':''}}" src="{{item.logo}}"></image>
+                    </view>
+                </swiper-item>
+            </block>
+        </view>
+    </swiper>
+</view>
