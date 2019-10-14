@@ -1,18 +1,18 @@
 {
   "usingComponents": {
-    "i-notice-bar": "../../../dist/notice-bar/index",
-    "i-tabs": "../../../dist/tabs/index",
-    "i-tab": "../../../dist/tab/index",
-    "i-button": "../../../dist/button/index",
-    "i-card": "../../../dist/card/index",
-    "i-spin": "../../../dist/spin/index",
-    "i-message": "../../../dist/message/index",
-    "i-action-sheet": "../../../dist/action-sheet/index",
-    "i-badge": "../../../dist/badge/index",
-    "i-tab-bar": "../../../dist/tab-bar/index",
-    "i-tab-bar-item": "../../../dist/tab-bar-item/index",
-    "i-toast": "../../../dist/toast/index",
-    "i-load-more": "../../../dist/load-more/index",
-    "i-switch": "../../../dist/switch/index"
+    "i-notice-bar": "../../../../dist/notice-bar/index",
+    "i-tabs": "../../../../dist/tabs/index",
+    "i-tab": "../../../../dist/tab/index",
+    "i-button": "../../../../dist/button/index",
+    "i-card": "../../../../dist/card/index",
+    "i-spin": "../../../../dist/spin/index",
+    "i-message": "../../../../dist/message/index",
+    "i-action-sheet": "../../../../dist/action-sheet/index",
+    "i-badge": "../../../../dist/badge/index",
+    "i-tab-bar": "../../../../dist/tab-bar/index",
+    "i-tab-bar-item": "../../../../dist/tab-bar-item/index",
+    "i-toast": "../../../../dist/toast/index",
+    "i-load-more": "../../../../dist/load-more/index",
+    "i-switch": "../../../../dist/switch/index"
   }
 }

@@ -1,9 +1,14 @@
-<view class="page-all">
+<view class="page-all" style="background:{{titleColor}};">
     <swiper previous-margin="94rpx" current="{{currentImg}}" circular="true" next-margin="94rpx" bindchange="themsChange">
         <block wx:for="{{thems}}" wx:key="*this">
             <swiper-item>
-                <view class="thems-img" style="{{index == currentImg?'':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
-                    <image src="{{item.image}}"></image>
+                <view bindtap="navChange" data-Nav="{{item.url}}" class="thems-dis">
+                    <view class="thems-img" style="{{index == currentImg?'':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
+                        <view class="thems-01" style="{{index == currentImg?'font-weight: bolder;color:#fff':''}}">
+                            {{item.text}}
+                        </view>
+                        <image src="{{item.image}}"></image>
+                    </view>
                 </view>
             </swiper-item>
         </block>
@@ -19,4 +24,5 @@
             </block>
         </view>
     </swiper>
+    <i-toast id="toast" />
 </view>

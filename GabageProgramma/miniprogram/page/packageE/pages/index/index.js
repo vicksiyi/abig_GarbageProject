@@ -1,6 +1,6 @@
 //index.js
-const { $Toast } = require('../../../dist/base/index');
-const { $Message } = require('../../../dist/base/index');
+const { $Toast } = require('../../../../dist/base/index');
+const { $Message } = require('../../../../dist/base/index');
 const app = getApp()
 
 Page({
@@ -187,7 +187,7 @@ Page({
     let _this = this
     if (res.currentTarget.dataset.id == 0) {
       wx.navigateTo({
-        url: `../../packageB/pages/${_this.data.thisPage[res.currentTarget.dataset.id]}/index`
+        url: `../../../packageB/pages/${_this.data.thisPage[res.currentTarget.dataset.id]}/index`
       })
     } else {
       $Toast({
@@ -262,7 +262,17 @@ Page({
   },
   navTitle: function () {
     wx.navigateTo({
-      url: '../../packageC/pages/index/index'
+      url: '../../../packageC/pages/index/index'
+    })
+  },
+  themsChange: function () {
+    wx.removeStorage({
+      key: 'thems',
+      success(res) {
+        wx.redirectTo({
+          url: '../../../packageA/index/index'
+        })
+      }
     })
   }
 })

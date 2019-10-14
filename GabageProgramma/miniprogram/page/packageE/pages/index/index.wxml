@@ -1,4 +1,4 @@
-<import src="../../../template/tab.wxml" />
+<import src="../../../../template/tab.wxml" />
 <!-- 通知 -->
 <swiper style='width:100%;height:{{height}}px;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChange" current="{{currentItem}}">
   <swiper-item item-id="homepage">

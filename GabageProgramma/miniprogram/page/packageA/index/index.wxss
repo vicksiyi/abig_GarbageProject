@@ -39,6 +39,14 @@ swiper {
     margin: 15% auto;
 }
 
+.thems-dis{
+    display: flex;
+    flex-direction: column;
+}
+.thems-img .thems-01{
+    text-align: center;
+    padding-bottom: 30rpx;
+}
 .thems-logo image {
     width: 60rpx;
     height: 60rpx;
