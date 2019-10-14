@@ -1,4 +1,4 @@
-// page/packageE//pages/index/index.js
+// page/packageJ//pages/index/index.js
 Page({
 
   /**

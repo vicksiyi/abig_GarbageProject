@@ -1,26 +1,2 @@
-<import src="../../../template/tab.wxml" />
-<!-- 通知 -->
-<swiper style='width:100%;height:{{height}}px;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" bindchange="bindChange" current="{{currentItem}}">
-  <swiper-item item-id="homepage">
-    <template is="tab1" data="{{type,left,color,currentItemList,inputLogo,thisCurrent}}"></template>
-  </swiper-item>
-  <swiper-item item-id="group">
-    <template is="tab2" data="{{currentTab2,spinShow,contentData,height,spinShow,newPageShow}}"></template>
-  </swiper-item>
-  <swiper-item item-id="remind">
-    <template is="tab3" data=""></template>
-  </swiper-item>
-  <swiper-item item-id="mine">
-    <template is="tab4" data="{{openid,nickName,avatarUrl}}"></template>
-  </swiper-item>
-</swiper>
-<i-toast id="toast" />
-<i-message id="message" />
-<view class="footer">
-  <i-tab-bar current="{{ current }}" color="#19be6b" bindchange="handleChange">
-    <i-tab-bar-item key="homepage" icon="camera" current-icon="camera_fill" title="识别"></i-tab-bar-item>
-    <i-tab-bar-item key="group" icon="browse" current-icon="browse_fill" title="发现"></i-tab-bar-item>
-    <i-tab-bar-item key="remind" icon="brush" current-icon="brush_fill" title="刷题"></i-tab-bar-item>
-    <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
-  </i-tab-bar>
-</view>
+<!--page/packageE//pages/index/index.wxml-->
+<text>page/packageE//pages/index/index.wxml</text>

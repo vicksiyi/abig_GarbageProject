@@ -32,6 +32,54 @@
       "pages": [
         "pages/index/index"
       ]
+    },
+    {
+      "root": "page/packageE/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageF/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageG/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageH/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageI/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageJ/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageK/",
+      "pages": [
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "page/packageL/",
+      "pages": [
+        "pages/index/index"
+      ]
     }
   ],
   "sitemapLocation": "sitemap.json"
