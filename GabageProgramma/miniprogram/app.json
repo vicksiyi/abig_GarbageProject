@@ -1,6 +1,7 @@
 {
   "pages": [
-    "page/packageA/index/index"
+    "page/packageA/index/index",
+    "page/packageA/thems/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
