@@ -1,4 +1,3 @@
-@import
 <!-- 答题 -->
 <template name="title">
     <view class="title-block">
@@ -50,9 +49,11 @@
             </view>
             <!-- 显示 -->
             <view class="scorll-canvas">
-                <view class="canvas-show-content">
+                <view class="canvas-show-content" id="wrapper">
                     <!-- 那种比赛 -->
-                    <view class='title'>环境护卫队-限时挑战赛</view>
+                    <view class='title'>
+                        <text data-text="环境护卫队-限时挑战赛">环境护卫队-限时挑战赛</text>
+                    </view>
                     <!-- 姓名、头像 -->
                     <view class="avatar-image-list">
                         <view class="avatar">
@@ -65,51 +66,209 @@
                     <!-- 完成率、一共多少题、击败 -->
                     <view class="persent">
                         <view>
-                            完成率：
-                            <text>{{numPersent}}%</text>
+                            <text data-text="完成率：">完成率：</text>
+                            <text data-text="{{numPersent}}">{{numPersent}}</text>
+                            <text data-text="%">%</text>
                         </view>
                         <view>
-                            得分:
-                            <text>{{result}}</text>
+                            <text data-text="得分：">得分：</text>
+                            <text data-text="{{result}}">{{result}}</text>
                         </view>
                         <view>
-                            击败：
-                            <text>19.6%</text>
-                            达人
+                            <text data-text="击败：">击败：</text>
+                            <text data-text="19.6%">19.6%</text>
+                            <text data-text="达人">达人</text>
                         </view>
                     </view>
                     <!-- 错题 -->
                     <view class="card-list">
                         <view class="tr bg-g">
                             <view class="td td1">
-                                <text>名称</text>
+                                <text data-text="名称">名称</text>
                             </view>
-                            <view class="td">正确类别</view>
-                            <view class="td">所选类别</view>
+                            <view class="td">
+                                <text data-text="正确类别">正确类别</text>
+                            </view>
+                            <view class="td">
+                                <text data-text="所选类别">所选类别</text>
+                            </view>
                         </view>
                         <view class="padding-swiper-block2">
                             <block wx:for="{{endValue}}" wx:key="{{code}}">
-                                <view class="tr" wx:if="{{!item.judge}}" data-Id='{{index}}'>
+                                <view class="tr" wx:if="{{!item.judge}}">
                                     <view class="td td1">
-                                        <text>{{item.name}}</text>
+                                        <text data-text="{{item.name}}">{{item.name}}</text>
                                     </view>
-                                    <view class="td">{{item.typeTrue}}</view>
-                                    <view class="td" style="text-decoration:line-through">{{item.text}}</view>
+                                    <view class="td">
+                                        <text data-text="{{item.typeTrue}}">{{item.typeTrue}}</text>
+                                    </view>
+                                    <view class="td" style="text-decoration:line-through">
+                                        <text data-text="{{item.text}}">{{item.text}}</text>
+                                    </view>
                                 </view>
                             </block>
                         </view>
                     </view>
                     <view class="line-list">
                         <!-- 尾部分割线 -->
-                        <i-divider content="圾不可错" color="#19be6b" lineColor="#fff"></i-divider>
+                        <view class="i-divider" style="color:#19be6b;font-size:12px;height:48px;">
+                            <view class="i-divider-content">
+                                <text data-text="圾不可错">圾不可错</text>
+                            </view>
+                            <view class="i-divider-line" style="background:#fff"></view>
+                        </view>
                         <!-- 尾部 -->
-                        <view style="font-size:0.6rem;text-align:center;">麻麻再也不用担心错扔垃圾了</view>
+                        <view style="font-size:0.6rem;text-align:center;">
+                            <text data-text="麻麻再也不用担心错扔垃圾了">麻麻再也不用担心错扔垃圾了</text>
+                        </view>
                     </view>
                 </view>
             </view>
             <view>
-                <i-button bind:click="handleClick" type="success">保存到相册</i-button>
+                <i-button bind:click="drawCanvas" type="success">保存到相册</i-button>
             </view>
         </view>
     </view>
+    <canvas canvas-id="canvas-map" class="share-canvas"></canvas>
 </template>
+
+
+
+<!-- .canvas-show-content {
+    border-radius: 10rpx;
+    background: #19be6b;
+    width: 93%;
+    margin: auto;
+    color: #fff;
+}
+
+.canvas-show-content .title {
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 30rpx;
+    padding-bottom: 40rpx;
+}
+
+.canvas-show-content .persent {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.6rem;
+    margin-top: 20rpx;
+    justify-content: space-around
+}
+
+.canvas-show-content .persent text {
+    font-weight: bolder;
+}
+
+.canvas-show-content .card-list {
+    margin-top: 30rpx;
+    background: #fff;
+    color: #1c2438;
+    width: 90%;
+    margin: 30rpx auto;
+}
+
+.canvas-show-content .avatar-image-list {
+    display: flex;
+    flex-direction: column;
+    width: 100rpx;
+    margin: auto;
+    font-size: 0.8rem;
+}
+
+.canvas-show-content .avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+
+.canvas-show-content .padding-swiper-block2 {
+    overflow: scroll;
+    font-size: 0.8rem;
+}
+
+.canvas-show-content .avatar-image-list .text {
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+.canvas-show-content .line-list {
+    width: 50%;
+    margin: 30rpx auto;
+    padding-bottom: 30rpx;
+}
+
+.canvas-show-content .footer-line {
+    text-align: center;
+}
+
+.canvas-show-content .i-divider {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.canvas-show-content .i-divider-content {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.canvas-show-content .i-divider-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1rpx;
+    background-color: #f7f7f7;
+    top: 50%;
+
+}
+.canvas-show-content .tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 2rem;
+    align-items: center;
+}
+
+.canvas-show-content .td {
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+}
+
+.canvas-show-content .bg-w {
+    background: snow;
+}
+
+.canvas-show-content .bg-g {
+    background: #E6F3F9;
+    font-size: 0.8rem;
+}
+
+.canvas-show-content .th {
+    width: 40%;
+    justify-content: center;
+    background: #2d8cf0;
+    color: #fff;
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+
+.canvas-show-content .th.th1 {
+    width: 20%;
+}
+
+.canvas-show-content .td.td1 {
+    width: 20%;
+    white-space: nowrap;
+} -->

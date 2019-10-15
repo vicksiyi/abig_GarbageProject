@@ -1,5 +1,6 @@
 const random = require("../../../../utils/random")
 const { $Message } = require('../../../../dist/base/index');
+const wxml2canvas = require('../../../../utils/wxml2canvas.js')
 Page({
 
   /**
@@ -70,11 +71,23 @@ Page({
     })
       .get({
         success: function (res) {
-          _this.setData({
-            valueTitle: res.data,
-            spinNow: false,
-            targetTime: new Date().getTime() + 1.5 * 60 * 1000
-          })
+          if (res.data.length == 20) {
+            _this.setData({
+              valueTitle: res.data,
+              spinNow: false,
+              targetTime: new Date().getTime() + 1.5 * 60 * 1000
+            })
+          } else {
+            setTimeout(() => {
+              $Message({
+                content: '系统内部出错',
+                type: 'error'
+              });
+              wx.redirectTo({
+                url: '../index/index'
+              })
+            }, 2000)
+          }
         }
       })
   },
@@ -317,6 +330,15 @@ Page({
     console.log("取消分享")
     _this.setData({
       showImg: false
+    })
+  },
+  drawCanvas: function () {
+    //创建节点选择器
+    var query = wx.createSelectorQuery();
+    //选择id
+    query.select('#wrapper').boundingClientRect()
+    query.exec(function (res) {
+      console.log(res[0].width,res[0].height)
     })
   }
 })
