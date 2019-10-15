@@ -3,8 +3,8 @@
         <block wx:for="{{thems}}" wx:key="*this">
             <swiper-item>
                 <view bindtap="navChange" data-Nav="{{item.url}}" class="thems-dis">
-                    <view class="thems-img" style="{{index == currentImg?'':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
-                        <view class="thems-01" style="{{index == currentImg?'font-weight: bolder;color:#fff':''}}">
+                    <view class="thems-img" style="{{index == currentImg?'box-shadow:0 0 1px #fff inset;':'filter:alpha(Opacity=80);-moz-opacity:0.3;opacity: 0.3;'}}">
+                        <view class="thems-01" style="{{index == currentImg?'font-weight: bolder;color:#fff;padding-top:30rpx;':''}}">
                             {{item.text}}
                         </view>
                         <image src="{{item.image}}"></image>
@@ -13,7 +13,7 @@
             </swiper-item>
         </block>
     </swiper>
-    <swiper previous-margin="320rpx" current="{{currentImg}}" circular="true" next-margin="320rpx" bindchange="themsChange">
+    <swiper class="swiper2" previous-margin="320rpx" current="{{currentImg}}" circular="true" next-margin="320rpx" bindchange="themsChange">
         <view class="thems-list">
             <block wx:for="{{thems}}" wx:key="*this">
                 <swiper-item>

@@ -2,5 +2,6 @@
   "usingComponents": {
     "i-toast": "../../../dist/toast/index"
   },
-  "navigationStyle":"custom"
+  "navigationStyle":"custom",
+  "disableScroll": true
 }
