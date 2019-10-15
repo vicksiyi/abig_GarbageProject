@@ -5,7 +5,8 @@
     "i-message": "../../../dist/message/index",
     "i-button": "../../../dist/button/index",
     "i-notice-bar": "../../../dist/notice-bar/index",
-    "i-tag": "../../../dist/tag/index"
+    "i-tag": "../../../dist/tag/index",
+    "i-divider": "../../../dist/divider/index"
   },
   "navigationBarTitleText": "限时答题ing..."
 }

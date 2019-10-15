@@ -45,7 +45,8 @@ Page({
     showMetch: false,
     numMetch: 0,
     numPersent: 0,
-    className: ''
+    className: '',
+    showImg: false
   },
 
   /**
@@ -72,7 +73,7 @@ Page({
           _this.setData({
             valueTitle: res.data,
             spinNow: false,
-            targetTime: new Date().getTime() + 10 * 1000
+            targetTime: new Date().getTime() + 1.5 * 60 * 1000
           })
         }
       })
@@ -301,5 +302,21 @@ Page({
       }
     }
     return text
+  },
+  // 分享成绩
+  handleShare: function () {
+    let _this = this
+    console.log("分享")
+    _this.setData({
+      showImg: true
+    })
+  },
+  // 关闭
+  showMove: function () {
+    let _this = this
+    console.log("取消分享")
+    _this.setData({
+      showImg: false
+    })
   }
 })

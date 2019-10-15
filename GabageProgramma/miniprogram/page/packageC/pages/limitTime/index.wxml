@@ -82,14 +82,16 @@
                     <i-button bind:click="showMetch" type="success">{{bottonText}}</i-button>
                 </view>
                 <view>
-                    <i-button bind:click="handleClick" type="error">分享成绩</i-button>
+                    <i-button bind:click="handleShare"  type="error">分享成绩</i-button>
                 </view>
             </view>
             <view bindtap="close" class="model-close">
-                <i-tag  class="i-tags" name="标签一" type="border" color="red">←退出限时答题</i-tag>
+                <i-tag class="i-tags" name="标签一" type="border" color="red">←退出限时答题</i-tag>
             </view>
         </view>
     </view>
 </view>
+<!-- 生成图片 -->
+<template is="image" data="{{showImg,numPersent,result,endValue}}"></template>
 <i-message id="message" />
 <i-spin size="large" fix wx:if="{{ spinNow }}"></i-spin>

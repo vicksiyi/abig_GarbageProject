@@ -133,6 +133,7 @@ page {
     left: 0px;
     top: 0px;
     background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 
@@ -207,11 +208,13 @@ page {
     width: 200rpx;
     height: 200rpx;
 }
-.padding-swiper-block{
+
+.padding-swiper-block {
     overflow: scroll;
     font-size: 0.8rem;
     height: 200rpx;
 }
+
 .padding-win {
     display: flex;
     flex-direction: row;
@@ -282,17 +285,145 @@ page {
 
 .td.td1 {
     width: 20%;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
-.scrol-view{
+.scrol-view {
     font-size: 0.7rem;
     color: #e9eaec;
-    padding-left:20rpx;
+    padding-left: 20rpx;
     padding-bottom: 10rpx;
 }
 
-.model-close{
+.model-close {
     position: relative;
     left: 20rpx;
+}
+
+
+
+/* 分享 */
+.canvas-show-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.canvas-show-image {
+    width: 80%;
+    margin: 15% auto;
+}
+
+.canvas-img-01 {
+    position: absolute;
+    top: -70rpx;
+    right: 5%;
+}
+
+.ani-show {
+    opacity: 0;
+    animation: myshow 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes myshow {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0;
+        /*圆形放大的同时，透明度逐渐减小为0*/
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.canvas-img-01 image {
+    width: 40rpx;
+    height: 40rpx;
+}
+.scorll-canvas{
+    width: 100%;
+    height: 800rpx;
+    overflow: scroll;
+}
+.canvas-show-content {
+    border-radius: 10rpx;
+    background: #19be6b;
+    width: 93%;
+    margin: auto;
+    color: #fff;
+}
+
+.canvas-show-content .title {
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 30rpx;
+    padding-bottom: 40rpx;
+}
+
+.canvas-show-content .persent {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.6rem;
+    margin-top: 20rpx;
+    justify-content: space-around
+}
+
+.canvas-show-content .persent text {
+    font-weight: bolder;
+}
+
+.card-list {
+    margin-top: 30rpx;
+    background: #fff;
+    color: #1c2438;
+    width: 90%;
+    margin: 30rpx auto;
+}
+
+.avatar-image-list {
+    display: flex;
+    flex-direction: column;
+    width: 100rpx;
+    margin: auto;
+    font-size: 0.8rem;
+}
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+
+.padding-swiper-block2 {
+    overflow: scroll;
+    font-size: 0.8rem;
+}
+
+.avatar-image-list .text {
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+.line-list {
+    width: 50%;
+    margin: 30rpx auto;
+    padding-bottom: 30rpx;
+}
+
+.footer-line {
+    text-align: center;
 }

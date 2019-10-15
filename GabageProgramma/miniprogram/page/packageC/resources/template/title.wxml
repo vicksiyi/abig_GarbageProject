@@ -1,7 +1,8 @@
+@import
 <!-- 答题 -->
 <template name="title">
     <view class="title-block">
-        <swiper current="{{currentItem}}" easing-function="linear" >
+        <swiper current="{{currentItem}}" easing-function="linear">
             <block wx:for="{{valueTitle}}" wx:key="id">
                 <swiper-item>
                     <!-- padding -->
@@ -38,5 +39,77 @@
                 </swiper-item>
             </block>
         </swiper>
+    </view>
+</template>
+<!-- 生成图片分享 -->
+<template name="image">
+    <view class="canvas-show-page" wx:if="{{showImg}}">
+        <view class="canvas-show-image {{showImg?'ani-show':''}}">
+            <view bindtap="showMove" class="canvas-img-01">
+                <image src="../../resources/images/close.png"></image>
+            </view>
+            <!-- 显示 -->
+            <view class="scorll-canvas">
+                <view class="canvas-show-content">
+                    <!-- 那种比赛 -->
+                    <view class='title'>环境护卫队-限时挑战赛</view>
+                    <!-- 姓名、头像 -->
+                    <view class="avatar-image-list">
+                        <view class="avatar">
+                            <open-data type="userAvatarUrl"></open-data>
+                        </view>
+                        <view class="text">
+                            <open-data type="userNickName"></open-data>
+                        </view>
+                    </view>
+                    <!-- 完成率、一共多少题、击败 -->
+                    <view class="persent">
+                        <view>
+                            完成率：
+                            <text>{{numPersent}}%</text>
+                        </view>
+                        <view>
+                            得分:
+                            <text>{{result}}</text>
+                        </view>
+                        <view>
+                            击败：
+                            <text>19.6%</text>
+                            达人
+                        </view>
+                    </view>
+                    <!-- 错题 -->
+                    <view class="card-list">
+                        <view class="tr bg-g">
+                            <view class="td td1">
+                                <text>名称</text>
+                            </view>
+                            <view class="td">正确类别</view>
+                            <view class="td">所选类别</view>
+                        </view>
+                        <view class="padding-swiper-block2">
+                            <block wx:for="{{endValue}}" wx:key="{{code}}">
+                                <view class="tr" wx:if="{{!item.judge}}" data-Id='{{index}}'>
+                                    <view class="td td1">
+                                        <text>{{item.name}}</text>
+                                    </view>
+                                    <view class="td">{{item.typeTrue}}</view>
+                                    <view class="td" style="text-decoration:line-through">{{item.text}}</view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="line-list">
+                        <!-- 尾部分割线 -->
+                        <i-divider content="圾不可错" color="#19be6b" lineColor="#fff"></i-divider>
+                        <!-- 尾部 -->
+                        <view style="font-size:0.6rem;text-align:center;">麻麻再也不用担心错扔垃圾了</view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <i-button bind:click="handleClick" type="success">保存到相册</i-button>
+            </view>
+        </view>
     </view>
 </template>

@@ -80,9 +80,6 @@ Page({
     // wx.navigateTo({
     //   url:"../../packageB/pages/textPage/index"
     // })
-    // wx.navigateTo({
-    //   url: "../../packageC/pages/limitTime/index"
-    // })
   },
   handleChange: function (res) {
     let _this = this;
