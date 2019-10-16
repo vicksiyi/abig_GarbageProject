@@ -96,7 +96,7 @@
                             </view>
                             <view class="padding-swiper-block2">
                                 <block wx:for="{{endValue}}" wx:key="{{code}}">
-                                    <view class="tr" >
+                                    <view class="tr">
                                         <view class="td td1">
                                             <text data-text="{{item.name}}">{{item.name}}</text>
                                         </view>
@@ -105,7 +105,7 @@
                                                 {{item.typeTrue}}
                                             </text>
                                         </view>
-                                        <view class="td" style="{{item.judge?'':'text-decoration:line-through'}}">
+                                        <view class="td" style="{{item.judge ?'':'text-decoration:line-through'}}">
                                             <text data-text="{{item.text}}">{{item.text}}</text>
                                         </view>
                                     </view>
@@ -132,7 +132,7 @@
                 <i-button bind:click="drawCanvas" type="success">保存到相册</i-button>
             </view>
         </view>
-        <canvas canvas-id="canvas-map" style="width: 560rpx; height: 2133rpx;" class="share-canvas"></canvas>
+        <canvas canvas-id="canvas-map" style="width: 560rpx; height: 1900rpx;" class="share-canvas"></canvas>
     </view>
 </template>
 <!-- .canvas-show-content {

@@ -47,8 +47,9 @@ Page({
     numMetch: 0,
     numPersent: 0,
     className: '',
-    showImg: true,
-    result: 0
+    showImg: false,
+    result: 0,
+    userInfo: []
   },
 
   /**
@@ -91,6 +92,18 @@ Page({
           }
         }
       })
+  },
+  onShow: function () {
+    let _this = this
+    wx.getStorage({
+      key: 'UserInfo',
+      success(res) {
+        _this.setData({
+          userInfo: JSON.parse(res.data).userInfo
+        })
+        console.log(JSON.parse(res.data).userInfo)
+      }
+    })
   },
   onUnload() {
     this.setData({
@@ -333,94 +346,138 @@ Page({
       showImg: false
     })
   },
+  // 分享图
   drawCanvas: function () {
     let _this = this
-    //创建节点选择器
-    var query = wx.createSelectorQuery();
-    //选择id
-    query.select('#wrapper').boundingClientRect()
-    query.exec(function (res) {
-      console.log(res[0].width, res[0].height)
-      const ctx = wx.createCanvasContext('canvas-map')
-      ctx.drawImage('../../resources/images/can.jpg', 0, 0, res[0].width, ((375 * res[0].height) / 667) * 2)
-      ctx.setFontSize(15)
-      ctx.setFillStyle('#fff')
-      let str = '环境护卫队-限时挑战赛'
-      ctx.fillText(str, (res[0].width - ctx.measureText(str).width) * 0.5, res[0].width * 0.1)
+    wx.getImageInfo({ // 或者用wx.downloadFile
+      src: _this.data.userInfo.avatarUrl,
+      success: re => {
+        let tempPath = re.path
 
-      // 头像 + 昵称
-      ctx.save(); // 先保存状态 已便于画完圆再用
-      ctx.beginPath(); //开始绘制
-      ctx.arc(100, 100, 100, 0, Math.PI * 2, false)
-      ctx.clip();
-      ctx.drawImage('../../resources/images/timg.jpg', (res[0].width * 0.5 - 25), 50, 50, 50)
-      ctx.restore();
-      let str2 = 'GC怪兽'
-      ctx.setFontSize(15)
-      ctx.setFillStyle('#fff')
-      ctx.fillText(str2, (res[0].width - ctx.measureText(str2).width) * 0.5, 120)
 
-      // 认证
-      ctx.drawImage('../../resources/images/oauth2.png', (res[0].width * 0.5 + 75), 50, 50, 50)
+        //创建节点选择器
+        var query = wx.createSelectorQuery();
+        //选择id
+        query.select('#wrapper').boundingClientRect()
+        query.exec(function (res) {
+          console.log(res[0].width, res[0].height)
+          const ctx = wx.createCanvasContext('canvas-map')
+          ctx.drawImage('../../resources/images/can.jpg', 0, 0, res[0].width, ((375 * res[0].height) / 667) * 2)
+          ctx.setFontSize(15)
+          ctx.setFillStyle('#fff')
+          let str = '环境护卫队-限时挑战赛'
+          ctx.fillText(str, (res[0].width - ctx.measureText(str).width) * 0.5, res[0].width * 0.1)
 
-      // 称号
-      let str_03 = `「${_this.data.className}」`
-      ctx.setFontSize(16)
-      ctx.setFillStyle('#f4ea2a')
-      ctx.fillText(str_03, (res[0].width - ctx.measureText(str_03).width) * 0.5, 140)
-      // 比率
-      let str3 = `完成率：${_this.data.numPersent}%`
-      ctx.setFontSize(10)
-      ctx.setFillStyle('#fff')
-      ctx.fillText(str3, 10, 160)
+          // 头像 + 昵称
+          ctx.save(); // 先保存状态 已便于画完圆再用
+          ctx.beginPath(); //开始绘制
+          ctx.arc(100, 100, 100, 0, Math.PI * 2, false)
+          ctx.clip();
+          ctx.drawImage(tempPath, (res[0].width * 0.5 - 25), 50, 50, 50)
+          ctx.restore();
+          let str2 = _this.data.userInfo.nickName
+          ctx.setFontSize(15)
+          ctx.setFillStyle('#fff')
+          ctx.fillText(str2, (res[0].width - ctx.measureText(str2).width) * 0.5, 120)
 
-      let str4 = `得分：${_this.data.result}`
-      ctx.setFontSize(10)
-      ctx.setFillStyle('#fff')
-      ctx.fillText(str4, (ctx.measureText(str3).width + 40), 160)
+          // 认证
+          ctx.drawImage('../../resources/images/oauth2.png', (res[0].width * 0.5 + 75), 50, 50, 50)
 
-      let str5 = '击败：19.5%达人'
-      ctx.setFontSize(10)
-      ctx.setFillStyle('#fff')
-      ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 60), 160)
-      let temp01 = ''
-      let temp02 = ''
-      let temp03 = ''
-      _this.data.endValue.map((value, index) => {
-        temp01 = value.name
-        temp02 = value.typeTrue
-        temp03 = value.text
-        if (value.judge) {
-          // 正确
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#19be6b')
-          ctx.fillText(temp01, (16), 284 + index * 20)
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#19be6b')
-          ctx.fillText(temp02, (110), 284 + index * 20)
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#19be6b')
-          ctx.fillText(temp03, (190), 284 + index * 20)
-        } else {
-          // 错误
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#495056')
-          ctx.fillText(temp01, (16), 284 + index * 20)
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#495056')
-          ctx.fillText(temp02, (110), 284 + index * 20)
-          ctx.setFontSize(13)
-          ctx.setFillStyle('#ed3f14')
-          ctx.fillText(temp03, (190), 284 + index * 20)
-          // 删除线
-          ctx.beginPath()
-          ctx.moveTo(190 + ctx.measureText(temp03).width, 284 - 4 + index * 20)
-          ctx.lineTo(190, 284 - 4 + index * 20)
-          ctx.stroke()
-        }
-      })
-      ctx.draw()
+          // 称号
+          let str_03 = `「${_this.data.className}」`
+          ctx.setFontSize(16)
+          ctx.setFillStyle('#f4ea2a')
+          ctx.fillText(str_03, (res[0].width - ctx.measureText(str_03).width) * 0.5, 140)
+          // 比率
+          let str3 = `完成率：${_this.data.numPersent}%`
+          ctx.setFontSize(10)
+          ctx.setFillStyle('#fff')
+          ctx.fillText(str3, 10, 160)
 
+          let str4 = `得分：${_this.data.result}`
+          ctx.setFontSize(10)
+          ctx.setFillStyle('#fff')
+          ctx.fillText(str4, (ctx.measureText(str3).width + 40), 160)
+
+          let str5 = '击败：19.5%达人'
+          ctx.setFontSize(10)
+          ctx.setFillStyle('#fff')
+          ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 60), 160)
+          let temp01 = ''
+          let temp02 = ''
+          let temp03 = ''
+          _this.data.endValue.map((value, index) => {
+            temp01 = value.name
+            temp02 = value.typeTrue
+            temp03 = value.text
+            if (value.judge) {
+              // 正确
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#19be6b')
+              ctx.fillText(temp01, (16), 284 + index * 20)
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#19be6b')
+              ctx.fillText(temp02, (110), 284 + index * 20)
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#19be6b')
+              ctx.fillText(temp03, (190), 284 + index * 20)
+            } else {
+              // 错误
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#495056')
+              ctx.fillText(temp01, (16), 284 + index * 20)
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#495056')
+              ctx.fillText(temp02, (110), 284 + index * 20)
+              ctx.setFontSize(13)
+              ctx.setFillStyle('#ed3f14')
+              ctx.fillText(temp03, (190), 284 + index * 20)
+              // 删除线
+              ctx.beginPath()
+              ctx.moveTo(190 + ctx.measureText(temp03).width, 284 - 4 + index * 20)
+              ctx.lineTo(190, 284 - 4 + index * 20)
+              ctx.stroke()
+            }
+          })
+          ctx.draw(true, _this.saveImage())
+        })
+      }
     })
+  },
+  // 保存图片
+  saveImage() {
+    setTimeout(() => {
+      wx.canvasToTempFilePath({
+        canvasId: 'canvas-map',
+        success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success() {
+              console.log(res.tempFilePath)
+              $Message({
+                content: '图片已保存到相册',
+                type: 'success'
+              });
+            },
+            fail(err) {
+              console.log(err)
+              // if (res.errMsg == "saveImageToPhotosAlbum:fail auth deny") {
+              //   console.log("打开设置窗口");
+              //   wx.openSetting({
+              //     success(settingdata) {
+              //       console.log(settingdata)
+              //       if (settingdata.authSetting["scope.writePhotosAlbum"]) {
+              //         console.log("获取权限成功，再次点击图片保存到相册")
+              //       } else {
+              //         console.log("获取权限失败")
+              //       }
+              //     }
+              //   })
+              // }
+            }
+          });
+        }
+      });
+    }, 3000)
   }
 })

@@ -419,7 +419,7 @@ page {
     top: 50%;
 
 }
-.canvas-show-content .tr {
+.tr {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -427,22 +427,22 @@ page {
     align-items: center;
 }
 
-.canvas-show-content .td {
+.td {
     width: 40%;
     justify-content: center;
     text-align: center;
 }
 
-.canvas-show-content .bg-w {
+.bg-w {
     background: snow;
 }
 
-.canvas-show-content .bg-g {
+.bg-g {
     background: #E6F3F9;
     font-size: 0.8rem;
 }
 
-.canvas-show-content .th {
+.th {
     width: 40%;
     justify-content: center;
     background: #2d8cf0;
@@ -452,11 +452,11 @@ page {
     align-items: center;
 }
 
-.canvas-show-content .th.th1 {
+.th.th1 {
     width: 20%;
 }
 
-.canvas-show-content .td.td1 {
+.td.td1 {
     width: 20%;
     white-space: nowrap;
 }

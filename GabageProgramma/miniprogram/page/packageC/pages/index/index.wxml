@@ -4,8 +4,11 @@
 <!-- 答题选择 -->
 <view class="button-list">
     <block wx:for="{{buttonText}}">
-        <view bindtap="buttonClick" data-Id="{{index}}">
-            <i-button type="success">{{item.name}}</i-button>
+        <view>
+            <i-button data-Id="{{index}}" open-type="getUserInfo" bind:getuserinfo="getUserInfo" type="success">
+                {{item.name}}
+            </i-button>
         </view>
     </block>
 </view>
+<i-message id="message" />

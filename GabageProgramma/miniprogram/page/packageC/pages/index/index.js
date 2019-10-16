@@ -1,4 +1,5 @@
-// page/packageC//pages/index/index.js
+const app = getApp()
+const { $Message } = require('../../../../dist/base/index');
 Page({
 
   /**
@@ -18,7 +19,10 @@ Page({
         "click": "testTitle",
         "name": "在线测试"
       }
-    ]
+    ],
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
@@ -39,13 +43,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.userInfo)
   },
-  buttonClick: function (e) {
-    // e.currentTarget.dataset.id
+  getUserInfo: function (e) {
     let _this = this
-    wx.navigateTo({
-      url: `../../pages/${_this.data.buttonText[e.currentTarget.dataset.id].click}/index`
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
     })
+    console.log(e.detail.errMsg)
+    if (e.detail.errMsg != 'getUserInfo:fail auth deny') {
+      wx.setStorage({
+        key: "UserInfo",
+        data: JSON.stringify(e.detail)
+      })
+      wx.navigateTo({
+        url: `../../pages/${_this.data.buttonText[e.currentTarget.dataset.id].click}/index`
+      })
+    } else {
+      $Message({
+        content: '必须授权才可进入',
+        type: 'warning'
+      });
+    }
   }
 })

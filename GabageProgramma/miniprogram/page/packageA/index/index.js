@@ -12,7 +12,7 @@ Page({
    */
   onShow: function (options) {
     wx.navigateTo({
-      url: "../../packageC/pages/limitTime/index"
+      url: "../../packageC/pages/index/index"
     })
     wx.getStorage({
       key: 'thems',
