@@ -50,76 +50,80 @@
             <!-- 显示 -->
             <view class="scorll-canvas">
                 <view class="canvas-show-content" id="wrapper">
-                    <!-- 那种比赛 -->
-                    <view class='title'>
-                        <text data-text="环境护卫队-限时挑战赛">环境护卫队-限时挑战赛</text>
-                    </view>
-                    <!-- 姓名、头像 -->
-                    <view class="avatar-image-list">
-                        <view class="avatar">
-                            <open-data type="userAvatarUrl"></open-data>
+                    <view class="canvas-show-content" id="wrapper">
+                        <!-- 那种比赛 -->
+                        <view class='title'>
+                            <text data-text="环境护卫队-限时挑战赛">环境护卫队-限时挑战赛</text>
                         </view>
-                        <view class="text">
-                            <open-data type="userNickName"></open-data>
-                        </view>
-                    </view>
-                    <!-- 完成率、一共多少题、击败 -->
-                    <view class="persent">
-                        <view>
-                            <text data-text="完成率：">完成率：</text>
-                            <text data-text="{{numPersent}}">{{numPersent}}</text>
-                            <text data-text="%">%</text>
-                        </view>
-                        <view>
-                            <text data-text="得分：">得分：</text>
-                            <text data-text="{{result}}">{{result}}</text>
-                        </view>
-                        <view>
-                            <text data-text="击败：">击败：</text>
-                            <text data-text="19.6%">19.6%</text>
-                            <text data-text="达人">达人</text>
-                        </view>
-                    </view>
-                    <!-- 错题 -->
-                    <view class="card-list">
-                        <view class="tr bg-g">
-                            <view class="td td1">
-                                <text data-text="名称">名称</text>
+                        <!-- 姓名、头像 -->
+                        <view class="avatar-image-list">
+                            <view class="avatar">
+                                <open-data type="userAvatarUrl"></open-data>
                             </view>
-                            <view class="td">
-                                <text data-text="正确类别">正确类别</text>
-                            </view>
-                            <view class="td">
-                                <text data-text="所选类别">所选类别</text>
+                            <view class="text">
+                                <open-data type="userNickName"></open-data>
                             </view>
                         </view>
-                        <view class="padding-swiper-block2">
-                            <block wx:for="{{endValue}}" wx:key="{{code}}">
-                                <view class="tr" wx:if="{{!item.judge}}">
-                                    <view class="td td1">
-                                        <text data-text="{{item.name}}">{{item.name}}</text>
-                                    </view>
-                                    <view class="td">
-                                        <text data-text="{{item.typeTrue}}">{{item.typeTrue}}</text>
-                                    </view>
-                                    <view class="td" style="text-decoration:line-through">
-                                        <text data-text="{{item.text}}">{{item.text}}</text>
-                                    </view>
+                        <!-- 完成率、一共多少题、击败 -->
+                        <view class="persent">
+                            <view>
+                                <text data-text="完成率：">完成率：</text>
+                                <text data-text="{{numPersent}}">{{numPersent}}</text>
+                                <text data-text="%">%</text>
+                            </view>
+                            <view>
+                                <text data-text="得分：">得分：</text>
+                                <text data-text="{{result}}">{{result}}</text>
+                            </view>
+                            <view>
+                                <text data-text="击败：">击败：</text>
+                                <text data-text="19.6%">19.6%</text>
+                                <text data-text="达人">达人</text>
+                            </view>
+                        </view>
+                        <!-- 错题 -->
+                        <view class="card-list">
+                            <view class="tr bg-g">
+                                <view class="td td1">
+                                    <text data-text="名称">名称</text>
                                 </view>
-                            </block>
-                        </view>
-                    </view>
-                    <view class="line-list">
-                        <!-- 尾部分割线 -->
-                        <view class="i-divider" style="color:#19be6b;font-size:12px;height:48px;">
-                            <view class="i-divider-content">
-                                <text data-text="圾不可错">圾不可错</text>
+                                <view class="td">
+                                    <text data-text="正确类别">正确类别</text>
+                                </view>
+                                <view class="td">
+                                    <text data-text="所选类别">所选类别</text>
+                                </view>
                             </view>
-                            <view class="i-divider-line" style="background:#fff"></view>
+                            <view class="padding-swiper-block2">
+                                <block wx:for="{{endValue}}" wx:key="{{code}}">
+                                    <view class="tr" >
+                                        <view class="td td1">
+                                            <text data-text="{{item.name}}">{{item.name}}</text>
+                                        </view>
+                                        <view class="td">
+                                            <text data-text="{{item.typeTrue}}">
+                                                {{item.typeTrue}}
+                                            </text>
+                                        </view>
+                                        <view class="td" style="{{item.judge?'':'text-decoration:line-through'}}">
+                                            <text data-text="{{item.text}}">{{item.text}}</text>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
                         </view>
-                        <!-- 尾部 -->
-                        <view style="font-size:0.6rem;text-align:center;">
-                            <text data-text="麻麻再也不用担心错扔垃圾了">麻麻再也不用担心错扔垃圾了</text>
+                        <view class="line-list">
+                            <!-- 尾部分割线 -->
+                            <view class="i-divider" style="color:#19be6b;font-size:12px;height:48px;">
+                                <view class="i-divider-content">
+                                    <text data-text="圾不可错">圾不可错</text>
+                                </view>
+                                <view class="i-divider-line" style="background:#fff"></view>
+                            </view>
+                            <!-- 尾部 -->
+                            <view style="font-size:0.6rem;text-align:center;">
+                                <text data-text="麻麻再也不用担心错扔垃圾了">麻麻再也不用担心错扔垃圾了</text>
+                            </view>
                         </view>
                     </view>
                 </view>
@@ -128,12 +132,9 @@
                 <i-button bind:click="drawCanvas" type="success">保存到相册</i-button>
             </view>
         </view>
+        <canvas canvas-id="canvas-map" style="width: 560rpx; height: 2133rpx;" class="share-canvas"></canvas>
     </view>
-    <canvas canvas-id="canvas-map" class="share-canvas"></canvas>
 </template>
-
-
-
 <!-- .canvas-show-content {
     border-radius: 10rpx;
     background: #19be6b;

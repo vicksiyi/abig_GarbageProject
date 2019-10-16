@@ -11,9 +11,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    // wx.navigateTo({
-    //   url: "../../packageC/pages/limitTime/index"
-    // })
+    wx.navigateTo({
+      url: "../../packageC/pages/limitTime/index"
+    })
     wx.getStorage({
       key: 'thems',
       success(res) {

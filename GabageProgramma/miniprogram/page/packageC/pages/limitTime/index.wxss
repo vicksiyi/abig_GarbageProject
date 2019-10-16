@@ -326,6 +326,10 @@ page {
     color: #fff;
 }
 
+.temp-image{
+    width: 560rpx;
+    height: 2133rpx;
+}
 .canvas-show-content .title {
     text-align: center;
     font-size: 0.9rem;

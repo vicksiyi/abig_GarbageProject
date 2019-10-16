@@ -47,7 +47,8 @@ Page({
     numMetch: 0,
     numPersent: 0,
     className: '',
-    showImg: false
+    showImg: true,
+    result: 0
   },
 
   /**
@@ -333,12 +334,57 @@ Page({
     })
   },
   drawCanvas: function () {
+    let _this = this
     //创建节点选择器
     var query = wx.createSelectorQuery();
     //选择id
     query.select('#wrapper').boundingClientRect()
     query.exec(function (res) {
-      console.log(res[0].width,res[0].height)
+      console.log(res[0].width, res[0].height)
+      const ctx = wx.createCanvasContext('canvas-map')
+      ctx.drawImage('../../resources/images/can.jpg', 0, 0, res[0].width, ((375 * res[0].height) / 667) * 2)
+      ctx.setFontSize(15)
+      ctx.setFillStyle('#fff')
+      let str = '环境护卫队-限时挑战赛'
+      ctx.fillText(str, (res[0].width - ctx.measureText(str).width) * 0.5, res[0].width * 0.1)
+
+      // 头像 + 昵称
+      ctx.save(); // 先保存状态 已便于画完圆再用
+      ctx.beginPath(); //开始绘制
+      ctx.arc(100, 100, 100, 0, Math.PI * 2, false)
+      ctx.clip();
+      ctx.drawImage('../../resources/images/timg.jpg', (res[0].width * 0.5 - 25), 50, 50, 50)
+      ctx.restore();
+      let str2 = 'GC怪兽'
+      ctx.setFontSize(15)
+      ctx.setFillStyle('#fff')
+      ctx.fillText(str2, (res[0].width - ctx.measureText(str2).width) * 0.5, 120)
+
+      // 认证
+      ctx.drawImage('../../resources/images/oauth2.png', (res[0].width * 0.5 + 75), 50, 50, 50)
+
+      // 称号
+      let str_03 = `「${_this.data.className}」`
+      ctx.setFontSize(16)
+      ctx.setFillStyle('#f4ea2a')
+      ctx.fillText(str_03, (res[0].width - ctx.measureText(str_03).width) * 0.5, 140)
+      // 比率
+      let str3 = `完成率：${_this.data.numPersent}%`
+      ctx.setFontSize(10)
+      ctx.setFillStyle('#fff')
+      ctx.fillText(str3, 10, 160)
+
+      let str4 = `得分：${_this.data.result}`
+      ctx.setFontSize(10)
+      ctx.setFillStyle('#fff')
+      ctx.fillText(str4, (ctx.measureText(str3).width + 40), 160)
+
+      let str5 = '击败：19.5%达人'
+      ctx.setFontSize(10)
+      ctx.setFillStyle('#fff')
+      ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 60), 160)
+
+      ctx.draw()
     })
   }
 })
