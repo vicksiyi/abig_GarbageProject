@@ -383,8 +383,44 @@ Page({
       ctx.setFontSize(10)
       ctx.setFillStyle('#fff')
       ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 60), 160)
-
+      let temp01 = ''
+      let temp02 = ''
+      let temp03 = ''
+      _this.data.endValue.map((value, index) => {
+        temp01 = value.name
+        temp02 = value.typeTrue
+        temp03 = value.text
+        if (value.judge) {
+          // 正确
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#19be6b')
+          ctx.fillText(temp01, (16), 284 + index * 20)
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#19be6b')
+          ctx.fillText(temp02, (110), 284 + index * 20)
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#19be6b')
+          ctx.fillText(temp03, (190), 284 + index * 20)
+        } else {
+          // 错误
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#495056')
+          ctx.fillText(temp01, (16), 284 + index * 20)
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#495056')
+          ctx.fillText(temp02, (110), 284 + index * 20)
+          ctx.setFontSize(13)
+          ctx.setFillStyle('#ed3f14')
+          ctx.fillText(temp03, (190), 284 + index * 20)
+          // 删除线
+          ctx.beginPath()
+          ctx.moveTo(190 + ctx.measureText(temp03).width, 284 - 4 + index * 20)
+          ctx.lineTo(190, 284 - 4 + index * 20)
+          ctx.stroke()
+        }
+      })
       ctx.draw()
+
     })
   }
 })
