@@ -487,7 +487,52 @@ Page({
               });
             },
             fail(err) {
+              _this.setData({
+                spinNow: false
+              })
               console.log(err)
+              if (err.errMsg == 'saveImageToPhotosAlbum:fail auth deny') {
+                $Message({
+                  content: '必须获取权限才可图片保存'
+                });
+                console.log("打开设置窗口");
+                wx.showModal({
+                  title: '跳转',
+                  content: '是否进入开启权限页面',
+                  confirmText: '确定',
+                  confirmColor: '#19be6b',
+                  success(res2) {
+                    if (res2.confirm) {
+                      wx.openSetting({
+                        success(data) {
+                          if (data.authSetting["scope.writePhotosAlbum"]) {
+                            $Message({
+                              content: '获取权限成功，再次点击图片保存到相册',
+                              type: 'success'
+                            });
+                          } else {
+                            $Message({
+                              content: '获取权限失败',
+                              type: 'error'
+                            });
+                          }
+                        },
+                        fail(err) {
+                          console.log(err)
+                          $Message({
+                            content: '未知错误',
+                            type: 'error'
+                          });
+                        }
+                      })
+                    } else {
+                      $Message({
+                        content: '用户取消选择'
+                      });
+                    }
+                  }
+                })
+              }
               // if (res.errMsg == "saveImageToPhotosAlbum:fail auth deny") {
               //   console.log("打开设置窗口");
               //   wx.openSetting({
