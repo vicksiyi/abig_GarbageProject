@@ -52,7 +52,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    console.log(e.detail.errMsg)
     if (e.detail.errMsg != 'getUserInfo:fail auth deny') {
       wx.setStorage({
         key: "UserInfo",

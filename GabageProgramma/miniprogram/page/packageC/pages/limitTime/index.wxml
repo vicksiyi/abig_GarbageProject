@@ -92,6 +92,6 @@
     </view>
 </view>
 <!-- 生成图片 -->
-<template is="image" data="{{showImg,numPersent,result,endValue}}"></template>
+<template is="image" data="{{showImg,numPersent,result,endValue,width,height}}"></template>
 <i-message id="message" />
 <i-spin size="large" fix wx:if="{{ spinNow }}"></i-spin>

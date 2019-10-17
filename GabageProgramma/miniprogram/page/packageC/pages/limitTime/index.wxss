@@ -267,6 +267,7 @@ page {
     top: 0px;
     background: rgba(0, 0, 0, 0.4);
     z-index: 2;
+    overflow: hidden;
 }
 
 .canvas-show-image {
@@ -285,6 +286,7 @@ page {
     animation: myshow 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
+    /* overflow: hidden; */
 }
 
 @keyframes myshow {

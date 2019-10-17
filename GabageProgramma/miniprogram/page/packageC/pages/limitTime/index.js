@@ -49,7 +49,9 @@ Page({
     className: '',
     showImg: false,
     result: 0,
-    userInfo: []
+    userInfo: [],
+    width: '',
+    height: ''
   },
 
   /**
@@ -104,6 +106,16 @@ Page({
         console.log(JSON.parse(res.data).userInfo)
       }
     })
+
+
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          width: res.screenWidth,
+          height: res.screenHeight
+        })
+      }
+    });
   },
   onUnload() {
     this.setData({
@@ -349,6 +361,9 @@ Page({
   // 分享图
   drawCanvas: function () {
     let _this = this
+    _this.setData({
+      spinNow: true
+    })
     wx.getImageInfo({ // 或者用wx.downloadFile
       src: _this.data.userInfo.avatarUrl,
       success: re => {
@@ -362,47 +377,55 @@ Page({
         query.exec(function (res) {
           console.log(res[0].width, res[0].height)
           const ctx = wx.createCanvasContext('canvas-map')
-          ctx.drawImage('../../resources/images/can.jpg', 0, 0, res[0].width, ((375 * res[0].height) / 667) * 2)
-          ctx.setFontSize(15)
+          console.log(res[0].width, res[0].height)
+          // 背景图片
+          ctx.drawImage('../../resources/images/can.jpg', 0, 0, ((804 / 2) * _this.data.width) / 375, ((2093 / 2) * _this.data.height) / 667)
+          ctx.setFontSize(20)
           ctx.setFillStyle('#fff')
           let str = '环境护卫队-限时挑战赛'
-          ctx.fillText(str, (res[0].width - ctx.measureText(str).width) * 0.5, res[0].width * 0.1)
+          ctx.fillText(str, (804 / 2 - ctx.measureText(str).width) * 0.5, (804 / 2) * 0.1)
 
           // 头像 + 昵称
-          ctx.save(); // 先保存状态 已便于画完圆再用
-          ctx.beginPath(); //开始绘制
-          ctx.arc(100, 100, 100, 0, Math.PI * 2, false)
-          ctx.clip();
-          ctx.drawImage(tempPath, (res[0].width * 0.5 - 25), 50, 50, 50)
-          ctx.restore();
-          let str2 = _this.data.userInfo.nickName
-          ctx.setFontSize(15)
-          ctx.setFillStyle('#fff')
-          ctx.fillText(str2, (res[0].width - ctx.measureText(str2).width) * 0.5, 120)
+          // ctx.save(); // 先保存状态 已便于画完圆再用
+          // ctx.beginPath(); //开始绘制
+          // ctx.arc(100, 100, 100, 0, Math.PI * 2, false)
+          // ctx.clip();
+          ctx.drawImage(tempPath, ((804 / 2) * 0.5 - 30), 60, 60, 60)
+          // ctx.restore();
+          // let str2 = _this.data.userInfo.nickName
+          // ctx.setFontSize(20)
+          // ctx.setFillStyle('#fff')
+          // ctx.fillText(str2, ((804 / 2) - ctx.measureText(str2).width) * 0.5, 120)
 
-          // 认证
-          ctx.drawImage('../../resources/images/oauth2.png', (res[0].width * 0.5 + 75), 50, 50, 50)
+          if (_this.data.result >= 60) {
+            // 认证
+            ctx.drawImage('../../resources/images/oauth2.png', ((804 / 2) * 0.5 + 75), 50, 50, 50)
+          } else {
+            // 认证
+            ctx.drawImage('../../resources/images/nooauth.png', ((804 / 2) * 0.5 + 75), 50, 50, 50)
+          }
+
 
           // 称号
           let str_03 = `「${_this.data.className}」`
-          ctx.setFontSize(16)
+          ctx.setFontSize(22)
           ctx.setFillStyle('#f4ea2a')
-          ctx.fillText(str_03, (res[0].width - ctx.measureText(str_03).width) * 0.5, 140)
+          ctx.fillText(str_03, ((804 / 2) - ctx.measureText(str_03).width) * 0.5, 148)
           // 比率
           let str3 = `完成率：${_this.data.numPersent}%`
-          ctx.setFontSize(10)
+          ctx.setFontSize(15)
           ctx.setFillStyle('#fff')
-          ctx.fillText(str3, 10, 160)
+          ctx.fillText(str3, 30, 168)
 
           let str4 = `得分：${_this.data.result}`
-          ctx.setFontSize(10)
+          ctx.setFontSize(15)
           ctx.setFillStyle('#fff')
-          ctx.fillText(str4, (ctx.measureText(str3).width + 40), 160)
+          ctx.fillText(str4, (ctx.measureText(str3).width + 60), 168)
 
           let str5 = '击败：19.5%达人'
-          ctx.setFontSize(10)
+          ctx.setFontSize(15)
           ctx.setFillStyle('#fff')
-          ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 60), 160)
+          ctx.fillText(str5, (ctx.measureText(str3).width + ctx.measureText(str4).width + 85), 168)
           let temp01 = ''
           let temp02 = ''
           let temp03 = ''
@@ -412,30 +435,30 @@ Page({
             temp03 = value.text
             if (value.judge) {
               // 正确
-              ctx.setFontSize(13)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#19be6b')
-              ctx.fillText(temp01, (16), 284 + index * 20)
-              ctx.setFontSize(13)
+              ctx.fillText(temp01, (16), (264 * _this.data.height) / 667 + index * 20)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#19be6b')
-              ctx.fillText(temp02, (110), 284 + index * 20)
-              ctx.setFontSize(13)
+              ctx.fillText(temp02, (160), (264 * _this.data.height) / 667 + index * 20)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#19be6b')
-              ctx.fillText(temp03, (190), 284 + index * 20)
+              ctx.fillText(temp03, (280), (264 * _this.data.height) / 667 + index * 20)
             } else {
               // 错误
-              ctx.setFontSize(13)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#495056')
-              ctx.fillText(temp01, (16), 284 + index * 20)
-              ctx.setFontSize(13)
+              ctx.fillText(temp01, (16), (264 * _this.data.height) / 667 + index * 20)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#495056')
-              ctx.fillText(temp02, (110), 284 + index * 20)
-              ctx.setFontSize(13)
+              ctx.fillText(temp02, (160), (264 * _this.data.height) / 667 + index * 20)
+              ctx.setFontSize(18)
               ctx.setFillStyle('#ed3f14')
-              ctx.fillText(temp03, (190), 284 + index * 20)
+              ctx.fillText(temp03, (280), (264 * _this.data.height) / 667 + index * 20)
               // 删除线
               ctx.beginPath()
-              ctx.moveTo(190 + ctx.measureText(temp03).width, 284 - 4 + index * 20)
-              ctx.lineTo(190, 284 - 4 + index * 20)
+              ctx.moveTo(280 + ctx.measureText(temp03).width, (264 * _this.data.height) / 667 - 4 + index * 20)
+              ctx.lineTo(280, (264 * _this.data.height) / 667 - 4 + index * 20)
               ctx.stroke()
             }
           })
@@ -446,6 +469,7 @@ Page({
   },
   // 保存图片
   saveImage() {
+    let _this = this
     setTimeout(() => {
       wx.canvasToTempFilePath({
         canvasId: 'canvas-map',
@@ -454,6 +478,9 @@ Page({
             filePath: res.tempFilePath,
             success() {
               console.log(res.tempFilePath)
+              _this.setData({
+                spinNow: false
+              })
               $Message({
                 content: '图片已保存到相册',
                 type: 'success'
