@@ -274,3 +274,52 @@
     width: 20%;
     white-space: nowrap;
 } -->
+<!-- 单条题目 -->
+<template name="infinite">
+    <view class="title-block">
+        <!-- padding -->
+        <view class="title-block-padding">
+            <!-- 题目  1/100 -->
+            <view class="title-block-title">
+                <view>题目</view>
+                <view class="title-block-text">
+                    <text>{{numOne}}</text>
+                    /N
+                </view>
+            </view>
+            <!-- name -->
+            <view class="title-name">{{nameOne}}</view>
+            <!-- 问题 -->
+            <view class="title-pro">属于以下哪种分类?</view>
+            <!-- 选择区 -->
+            <view class="select">
+                <!-- 选择 -->
+                <view class="select-title">请选择:</view>
+                <!-- 类别 -->
+                <view wx:for="{{selectData}}" wx:for-item="twodata" wx:for-index="twoindex" wx:key="logo">
+                    <view class="select-content" hover-class="select{{twoindex}}" bindtap="select" data-Id="{{twoindex}}" data-Index="{{index}}">
+                        <!-- logo -->
+                        <view class="logo" style="background:{{twodata.color}}">
+                            <image src="{{twodata.logo}}"></image>
+                        </view>
+                        <!-- text -->
+                        <view class="select-content-text">{{twodata.name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 规则 -->
+<template name="gui">
+    <view wx:if="{{showImgNow}}" bindtap="closeImg" class="model">
+        <view class="show-model">
+            <view class="title">规则</view>
+            <view>1、此区为无限答题区</view>
+            <view>2、用户可一直做题</view>
+            <view>3、用户直接点击 返回键退出本模块</view>
+            <view>4、后台会自动统计用户答题情况</view>
+            <view>5、用户可在首页“我的”相应模块查看答题数据</view>
+        </view>
+    </view>
+</template>

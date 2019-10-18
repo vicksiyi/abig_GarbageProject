@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-message": "../../../dist/message/index"
+  }
 }

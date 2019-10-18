@@ -1,2 +1,11 @@
-<!--page/packageC//pages/infiniteNum/index.wxml-->
-<text>page/packageC//pages/infiniteNum/index.wxml</text>
+<import src="../../resources/template/title.wxml" />
+<!-- 答题区 -->
+<template is="infinite" data="{{selectData,numOne,nameOne,spinNow}}"></template>
+<!-- 规则 -->
+<view class="gui">
+    <image bindtap="showImg" src="../../resources/images/gui.png"></image>
+</view>
+<!-- 规则 -->
+<template is="gui" data="{{showImgNow}}"></template>
+<i-message id="message" />
+<i-spin size="large" fix wx:if="{{ spinNow }}"></i-spin>

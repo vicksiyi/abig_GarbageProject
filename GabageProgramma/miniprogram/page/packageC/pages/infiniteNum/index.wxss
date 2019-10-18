@@ -1,1 +1,181 @@
-/* page/packageC//pages/infiniteNum/index.wxss */
+.time-color {
+    width: 50%;
+    margin: 30rpx auto;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #19be6b;
+}
+
+swiper {
+    height: 100%;
+}
+
+page {
+    background: #f8f8f9;
+}
+
+.title-block {
+    background: #fff;
+    width: 86%;
+    margin: 20% auto;
+    height: 880rpx;
+    border-radius: 10rpx;
+}
+
+.title-block-padding {
+    width: 96%;
+    margin: 20rpx auto;
+}
+
+.title-block-title {
+    padding: 30rpx;
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    color: #80848f;
+}
+
+.title-block-text {
+    position: relative;
+    left: 386rpx;
+    font-weight: normal;
+}
+
+.title-block-text text {
+    color: #19be6b;
+}
+
+.title-name {
+    text-align: center;
+    font-weight: bolder;
+    color: #495060;
+    font-size: 1.2rem;
+}
+
+.title-pro {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20rpx;
+    font-weight: bolder;
+    color: #80848f;
+}
+
+.select .select-title {
+    padding: 20rpx;
+    font-size: 0.8rem;
+    color: #bbbec4;
+}
+
+.select-content {
+    width: 96%;
+    height: 100rpx;
+    background: #e9eaec;
+    margin: 16rpx auto;
+    border-radius: 46rpx;
+    display: flex;
+    flex-direction: row;
+    color: #80848f;
+}
+
+.logo {
+    width: 80rpx;
+    height: 80rpx;
+    background: #2d8cf0;
+    border-radius: 50%;
+    margin: 10rpx 30rpx;
+}
+
+.logo image {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 10rpx;
+}
+
+
+.select-content-text {
+    width: 100%;
+    padding-left: 88rpx;
+    line-height: 108rpx;
+    font-size: 1rem;
+}
+
+.select0 {
+    background: #2d8cf0;
+    color: #fff;
+}
+
+.select1 {
+    background: #ed3f14;
+    color: #fff;
+}
+
+.select2 {
+    background: #664035;
+    color: #fff;
+}
+
+.select3 {
+    background: #495060;
+    color: #fff;
+}
+
+.select4 {
+    background: #ff9900;
+    color: #fff;
+}
+
+
+.model-title {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+
+.gui {
+    position: fixed;
+    bottom: 70rpx;
+    right: 50rpx;
+}
+
+.gui image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.show-model {
+    width: 60%;
+    height: 500rpx;
+    margin: 30% auto;
+    background: #fff;
+    border-radius: 10rpx;
+    padding: 20rpx;
+    font-size: 0.9rem;
+}
+
+.show-model .title {
+    font-size: 1rem;
+    color: #19be6b;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.show-model view {
+    color: #495060;
+    font-size: 0.8rem;
+    margin-top: 20rpx;
+}

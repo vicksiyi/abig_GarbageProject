@@ -12,7 +12,7 @@ Page({
    */
   onShow: function (options) {
     // wx.navigateTo({
-    //   url: "../../packageC/pages/index/index"
+    //   url: "../../packageC/pages/infiniteNum/index"
     // })
     wx.getStorage({
       key: 'thems',

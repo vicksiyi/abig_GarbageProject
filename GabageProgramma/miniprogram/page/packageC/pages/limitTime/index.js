@@ -1,6 +1,5 @@
 const random = require("../../../../utils/random")
 const { $Message } = require('../../../../dist/base/index');
-const wxml2canvas = require('../../../../utils/wxml2canvas.js')
 Page({
 
   /**
